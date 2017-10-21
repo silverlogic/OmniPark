@@ -24,6 +24,7 @@
 		88F1D5371F9BDA21007B0DA3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F1D5361F9BDA21007B0DA3 /* NotificationController.swift */; };
 		88F1D5391F9BDA21007B0DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88F1D5381F9BDA21007B0DA3 /* Assets.xcassets */; };
 		88F1D53E1F9BDA21007B0DA3 /* watchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 88F1D5211F9BDA21007B0DA3 /* watchapp.app */; };
+		88F1D54A1F9BE2AB007B0DA3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F1D5491F9BE2AB007B0DA3 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		88F1D5381F9BDA21007B0DA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88F1D53A1F9BDA21007B0DA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88F1D53B1F9BDA21007B0DA3 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		88F1D5491F9BE2AB007B0DA3 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A1BB609092067954DCDC4990 /* Pods_watchapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04F599538D62DF6784CABEA /* Pods-OminPark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OminPark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OminPark/Pods-OminPark.debug.xcconfig"; sourceTree = "<group>"; };
 		BA3E2CAF70DA126D7E9AACA6 /* Pods-watchapp Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchapp Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchapp Extension/Pods-watchapp Extension.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,12 +164,12 @@
 		88F1D50A1F9BD8D9007B0DA3 /* OminPark */ = {
 			isa = PBXGroup;
 			children = (
+				88F1D54B1F9BE892007B0DA3 /* Views */,
+				88F1D5481F9BE284007B0DA3 /* ViewControllers */,
+				88F1D5471F9BE26A007B0DA3 /* Storyboards */,
 				88F1D50B1F9BD8D9007B0DA3 /* AppDelegate.swift */,
 				88F1D50D1F9BD8D9007B0DA3 /* art.scnassets */,
-				88F1D50F1F9BD8D9007B0DA3 /* ViewController.swift */,
-				88F1D5111F9BD8D9007B0DA3 /* Main.storyboard */,
 				88F1D5141F9BD8D9007B0DA3 /* Assets.xcassets */,
-				88F1D5161F9BD8D9007B0DA3 /* LaunchScreen.storyboard */,
 				88F1D5191F9BD8D9007B0DA3 /* Info.plist */,
 			);
 			path = OminPark;
@@ -194,6 +196,31 @@
 				88F1D53B1F9BDA21007B0DA3 /* PushNotificationPayload.apns */,
 			);
 			path = "watchapp Extension";
+			sourceTree = "<group>";
+		};
+		88F1D5471F9BE26A007B0DA3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				88F1D5111F9BD8D9007B0DA3 /* Main.storyboard */,
+				88F1D5161F9BD8D9007B0DA3 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		88F1D5481F9BE284007B0DA3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				88F1D50F1F9BD8D9007B0DA3 /* ViewController.swift */,
+				88F1D5491F9BE2AB007B0DA3 /* MapViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		88F1D54B1F9BE892007B0DA3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F6EFAEC3EEF97AB9D25D2C93 /* Pods */ = {
@@ -371,9 +398,13 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-OminPark/Pods-OminPark-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -492,6 +523,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88F1D5101F9BD8D9007B0DA3 /* ViewController.swift in Sources */,
+				88F1D54A1F9BE2AB007B0DA3 /* MapViewController.swift in Sources */,
 				88F1D50C1F9BD8D9007B0DA3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

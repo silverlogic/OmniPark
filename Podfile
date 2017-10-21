@@ -7,6 +7,8 @@ target 'OminPark' do
 
   # Pods for OminPark
   pod 'Alamofire', '~> 4.5.1'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
   pod 'SwiftyJSON', '~> 4.0.0-alpha.1'
 
   post_install do |installer|
