@@ -284,6 +284,12 @@ fileprivate extension ViewController {
         let node = SCNNode(geometry: parkingSpace)
         nodes.append(node)
         sceneView.scene.rootNode.addChildNode(node)
+        let arrows = NavigationManager.shared.arrowsForNavigation()
+        arrows.forEach { arrow in
+            arrow.position = arrow.position + SCNVector3(0, 0.1, 0)
+            node.addChildNode(arrow)
+        }
+        NavigationManager.shared.run(arrows)
         for _ in 0..<4 {
             let pinNode = SCNSphere(radius: 0.005)
             pinNode.firstMaterial?.diffuse.contents = UIColor.red.withAlphaComponent(0.8)

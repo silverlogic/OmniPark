@@ -11,7 +11,7 @@ import SceneKit
 class ArrowNode: SCNNode {
     override init() {
         super.init()
-        let width: CGFloat = 0.007
+        let width: CGFloat = 0.01
         let subNode = SCNNode()
         addChildNode(subNode)
         let plane = SCNPlane(width: width, height: width / 2.0)
