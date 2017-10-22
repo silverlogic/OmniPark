@@ -8,14 +8,16 @@
 
 import SceneKit
 
-class ArrowNode: SCNNode {
+class ArrowNode: BaseNode {
+    
+    // MARK: - Initializers
     override init() {
         super.init()
         let width: CGFloat = 0.01
         let subNode = SCNNode()
         addChildNode(subNode)
-        let plane = SCNPlane(width: width, height: width / 2.0)
-        plane.firstMaterial?.diffuse.contents = UIColor.green.withAlphaComponent(0.8)
+        let plane = SCNPlane(width: width, height: width * 0.602)
+        plane.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "icon-arrow")
         let planeNode = SCNNode(geometry: plane)
         planeNode.eulerAngles = SCNVector3(CGFloat.pi * -0.5, 0.0, 0.0)
         subNode.addChildNode(planeNode)

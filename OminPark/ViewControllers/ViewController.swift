@@ -286,7 +286,8 @@ fileprivate extension ViewController {
         sceneView.scene.rootNode.addChildNode(node)
         let arrows = NavigationManager.shared.arrowsForNavigation()
         arrows.forEach { arrow in
-            arrow.position = arrow.position + SCNVector3(0, 0.1, 0)
+            arrow.position = arrow.position + SCNVector3(0, 0.01, 0)
+            arrow.eulerAngles = SCNVector3(0.0, CGFloat.pi * 1.5, 0.0)
             node.addChildNode(arrow)
         }
         NavigationManager.shared.run(arrows)
