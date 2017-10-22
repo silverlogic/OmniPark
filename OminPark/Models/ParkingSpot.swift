@@ -109,6 +109,10 @@ final class ParkingSpotManager {
         }
     }
     
+    func parkingSpotForMarker(_ marker: GMSMarker) -> ParkingSpot? {
+        return parkingSpots.first(where: { $0.location.latitude == marker.position.latitude && $0.location.longitude == marker.position.longitude })
+    }
+    
     func directionsToMarker(_ destinationMarker: GMSMarker, starting from: CLLocationCoordinate2D, completion: @escaping (_ polyLine: GMSPolyline?, _ error: Error?) -> Void) {
         let startingPoint = "\(from.latitude),\(from.longitude)"
         let destinationPoint = "\(destinationMarker.position.latitude),\(destinationMarker.position.longitude)"
