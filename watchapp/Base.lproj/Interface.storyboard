@@ -16,7 +16,7 @@
                     <items>
                         <imageView width="84" height="84" alignment="left" image="omnipark-icon-watch" id="vsv-WG-Tej"/>
                         <label width="1" alignment="center" text="3377 S Las Vegas Blvd, Las Vegas NV 89109" textAlignment="left" id="Fqj-K4-VaU"/>
-                        <button width="1" alignment="left" title="Extend" id="WgU-D1-HwO">
+                        <button width="1" alignment="left" title="Extended" id="WgU-D1-HwO">
                             <color key="backgroundColor" red="0.94901960780000005" green="0.79215686269999996" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="system" pointSize="15"/>
                         </button>

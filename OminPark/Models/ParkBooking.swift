@@ -37,6 +37,13 @@ final class ParkBooking: Decodable {
         let end = try values.decode(String.self, forKey: .endDate)
         endDate = dateFormatter.date(from: end)!
     }
+    
+    init(parkBookingId: Int16, parkingSpotId: Int16, startDate: Date, endDate: Date) {
+        self.parkBookingId = parkBookingId
+        self.parkingSpotId = parkingSpotId
+        self.startDate = startDate
+        self.endDate = endDate
+    }
 }
 
 final class ParkBookingManager {
@@ -97,6 +104,36 @@ final class ParkBookingManager {
     }
     
     func extendParkBooking(completion: @escaping (_ error: Error?) -> Void) {
-        
+        guard let token = UserManager.shared.token else {
+            completion(nil)
+            return
+        }
+        guard let booking = parkBooking else {
+            completion(nil)
+            return
+        }
+        let url = "\(BASE_URL)/bookings/\(booking.parkBookingId)/extend"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let newEndDate = booking.endDate.addingTimeInterval(1800)
+        let formattedDate = dateFormatter.string(from: newEndDate)
+        let body = ["end": formattedDate]
+        let headers: [String: String] = ["Authorization": "Token \(token)"]
+        DispatchQueue.global(qos: .userInitiated).async {
+            let networkClient = NetworkClient()
+            networkClient.performRequest(url: url, httpMethod: .post, parameters: body, headers: headers) { (data, error) in
+                DispatchQueue.main.async {
+                    guard error == nil else {
+                        print("Error extending park booking")
+                        print(error!)
+                        completion(error!)
+                        return
+                    }
+                    self.parkBooking = ParkBooking(parkBookingId: booking.parkBookingId, parkingSpotId: booking.parkingSpotId, startDate: booking.startDate, endDate: newEndDate)
+                    print("Parking extended")
+                    completion(nil)
+                }
+            }
+        }
     }
 }
