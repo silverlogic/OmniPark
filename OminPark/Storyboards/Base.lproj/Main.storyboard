@@ -17,7 +17,7 @@
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="BV1-FR-VrT" customClass="ViewController" customModule="OminPark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BV1-FR-VrT" customClass="ViewController" customModule="OmniPark" customModuleProvider="target" sceneMemberID="viewController">
                     <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -37,7 +37,7 @@
         <!--Map View Controller-->
         <scene sceneID="pD7-Ew-8Qf">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" id="VhW-Y6-8s6" customClass="MapViewController" customModule="OminPark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="VhW-Y6-8s6" customClass="MapViewController" customModule="OmniPark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JY5-ee-mSD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,7 +46,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyv-XZ-Ry1" customClass="CustomView" customModule="OminPark" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyv-XZ-Ry1" customClass="CustomView" customModule="OmniPark" customModuleProvider="target">
                                 <rect key="frame" x="7" y="568" width="361" height="59"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3377 S Las Vegas Blvd, Las Vegas, NV 89109" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQM-CR-Lvn">
@@ -78,7 +78,7 @@
                                     <constraint firstItem="hVw-Kx-je2" firstAttribute="top" secondItem="mQM-CR-Lvn" secondAttribute="bottom" constant="12" id="sOQ-3s-aUB"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgX-40-d56" customClass="CircleButton" customModule="OminPark" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgX-40-d56" customClass="CircleButton" customModule="OmniPark" customModuleProvider="target">
                                 <rect key="frame" x="318" y="510" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.792156862745098" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -90,7 +90,7 @@
                                     <action selector="micButtonTapped" destination="VhW-Y6-8s6" eventType="touchUpInside" id="UG9-5q-590"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffX-BY-mu3" customClass="CircleButton" customModule="OminPark" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffX-BY-mu3" customClass="CircleButton" customModule="OmniPark" customModuleProvider="target">
                                 <rect key="frame" x="318" y="24" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.79215686269999996" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -99,7 +99,7 @@
                                 </constraints>
                                 <state key="normal" image="settings-gear"/>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eQ-Wx-Be2" customClass="CircleButton" customModule="OminPark" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eQ-Wx-Be2" customClass="CircleButton" customModule="OmniPark" customModuleProvider="target">
                                 <rect key="frame" x="-55" y="511" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -108,7 +108,7 @@
                                 </constraints>
                                 <state key="normal" image="google-map"/>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFS-Ao-W6K" customClass="CircleButton" customModule="OminPark" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFS-Ao-W6K" customClass="CircleButton" customModule="OmniPark" customModuleProvider="target">
                                 <rect key="frame" x="-55" y="454" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -117,7 +117,7 @@
                                 </constraints>
                                 <state key="normal" image="apple-map"/>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUy-ic-7L7" customClass="CircleButton" customModule="OminPark" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUy-ic-7L7" customClass="CircleButton" customModule="OmniPark" customModuleProvider="target">
                                 <rect key="frame" x="-55" y="397" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.79215686269999996" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -125,6 +125,9 @@
                                     <constraint firstAttribute="width" constant="50" id="yJP-KU-W2q"/>
                                 </constraints>
                                 <state key="normal" image="ar-icon"/>
+                                <connections>
+                                    <action selector="arButtonTapped" destination="VhW-Y6-8s6" eventType="touchUpInside" id="dRE-7W-jhg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

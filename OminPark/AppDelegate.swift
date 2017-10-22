@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 import GoogleMaps
 
 @UIApplicationMain
@@ -17,7 +18,77 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey(GOOGLE_MAPS_API_KEY)
         UserManager.shared.login()
+        let current = UNUserNotificationCenter.current()
+        current.requestAuthorization(options: [.badge, .alert, .sound]) { (granted, error) in
+            DispatchQueue.main.async {
+                print(granted)
+                if granted {
+                    application.registerForRemoteNotifications()
+                }
+            }
+        }
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("Device registered for notifications")
+        let notificationAction = UNNotificationAction(identifier: "com.silverlogic.OmniPark.renewaction",
+                                                      title: "Renew",
+                                                      options: .foreground)
+        let notificationCategory = UNNotificationCategory(identifier: "com.silverlogic.OmniPark.category",
+                                                          actions: [notificationAction], intentIdentifiers: [],
+                                                          hiddenPreviewsBodyPlaceholder: "Renew Parking",
+                                                          options: [])
+        let current = UNUserNotificationCenter.current()
+        current.setNotificationCategories([notificationCategory])
+        current.delegate = self
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print("Device token: \(token)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Error registering for notifications")
+        print(error)
+    }
+}
+
+
+// MARK: - UNUserNotificationCenterDelegate
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let actionIdentifier = response.actionIdentifier
+        let content = response.notification.request.content
+        switch actionIdentifier {
+        case UNNotificationDismissActionIdentifier:
+            completionHandler()
+        case UNNotificationDefaultActionIdentifier:
+            completionHandler()
+        case "com.silverlogic.OmniPark.renewaction":
+            print("Action chosen")
+            ParkBookingManager.shared.extendParkBooking(completion: { (error) in
+                completionHandler()
+            })
+        default:
+            completionHandler()
+        }
+    }
+}
+
+
+// MARK: - Private Instance Attributes
+private extension AppDelegate {
+    func extendParkBooking(completion: @escaping () -> Void) {
+        ParkBookingManager.shared.extendParkBooking { (error) in
+            completion()
+        }
     }
 }
 

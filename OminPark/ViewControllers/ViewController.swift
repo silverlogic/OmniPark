@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 import Vision
+import UserNotifications
 
 class ViewController: UIViewController {
     
@@ -24,6 +25,7 @@ class ViewController: UIViewController {
     var nodes: [SCNNode] = []
     var currentGesture: ARGesture?
     var meterNode: MeterNode?
+    var selectedParkingLot: ParkingSpot?
     
     
     // MARK: - Lifecycle
@@ -47,10 +49,10 @@ class ViewController: UIViewController {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         sceneView.session.run(configuration, options: [.removeExistingAnchors, .resetTracking])
-//        if notShowingMap {
-//            showMapView()
-//            notShowingMap = false
-//        }
+        if notShowingMap {
+            showMapView()
+            notShowingMap = false
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -158,12 +160,12 @@ fileprivate extension ViewController {
             guard result.count > 1,
                 let tl = result.filter({ $0.characterBoxes?.count == 8 }).first,
                 let tr = result.filter({ $0.characterBoxes?.count == 14 }).first else {
-                print("WRONG TEXT")
+                //print("WRONG TEXT")
                 return
             }
             guard let positionTl = self.position(for: self.getTextRect(from: tl.characterBoxes!), from: frame),
                   let positionTr = self.position(for: self.getTextRect(from: tr.characterBoxes!), from: frame) else {
-                print("WRONG POSITION")
+                //print("WRONG POSITION")
                 return
             }
             if (positionTl - positionTr).length() > 0.1 || (positionTl - positionTr).length() < 0.04 {
@@ -220,6 +222,9 @@ fileprivate extension ViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mapViewController = storyboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
         present(mapViewController, animated: true, completion: nil)
+        mapViewController.parkingLotSelected = {
+            self.selectedParkingLot = $0
+        }
     }
 }
 
@@ -273,6 +278,31 @@ fileprivate extension ViewController {
         meterSubNode.look(at: sceneView.pointOfView!, offset: SCNVector3(0.0, -0.6, 0.0))
         meter.buttonNode.action = { [weak self] _ in
             meter.isHidden = true
+            let startDate = Date()
+            let endDate = Date().addingTimeInterval(meter.duration)
+            guard let parkingLot = self?.selectedParkingLot else { return }
+            ParkBookingManager.shared.bookParkingSpot(parkingLot.parkingSpotId, startDate: startDate, endDate: endDate) { (error) in
+                guard error == nil else {
+                    print("Error booking parking")
+                    return
+                }
+                let content = UNMutableNotificationContent()
+                content.title = "Parking Space Expiring"
+                content.body = "Will you like to extend your parking space"
+                content.sound = UNNotificationSound.default()
+                content.categoryIdentifier = "com.silverlogic.OmniPark.category"
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                let notification = UNNotificationRequest(identifier: "com.silverlogic.OmniPark.request",
+                                                         content: content,
+                                                         trigger: trigger)
+                UNUserNotificationCenter.current().add(notification) { (error) in
+                    guard error == nil else {
+                        print("Error setting notification")
+                        return
+                    }
+                    print("Notification sent")
+                }
+            }
             self?.showOffers()
         }
     }

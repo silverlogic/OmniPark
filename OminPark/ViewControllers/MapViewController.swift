@@ -23,6 +23,7 @@ final class MapViewController: UIViewController {
     
     
     // MARK: - Private Instance Attributes
+    var parkingLotSelected: ((_ parkingLot: ParkingSpot) -> Void)?
     private var audioEngine: AVAudioEngine!
     private var speechSynthesizer: AVSpeechSynthesizer!
     private var voice: AVSpeechSynthesisVoice!
@@ -36,6 +37,7 @@ final class MapViewController: UIViewController {
         "yes, give me directions to it"
     ]
     private var mapMarkers: [GMSMarker] = []
+    private var selectedParkingLot: ParkingSpot!
     private let reserveParkingText = "I have found a peer to peer parking spot. Do you want directions?"
     private let unrecognizedSpeechText = "I couldn't understand. Repeat that again?"
     private let directionsSet = "Here are your directions"
@@ -63,6 +65,12 @@ final class MapViewController: UIViewController {
 private extension MapViewController {
     @IBAction func micButtonTapped() {
         promptForParkingHelp()
+    }
+    
+    @IBAction func arButtonTapped() {
+        dismiss(animated: true) {
+            self.parkingLotSelected?(self.selectedParkingLot)
+        }
     }
 }
 
@@ -174,6 +182,7 @@ private extension MapViewController {
         stopSpeechRecognition()
         if validCommand.contains("find") {
             let peerMarker = mapMarkers[1]
+            selectedParkingLot = ParkingSpotManager.shared.parkingSpotForMarker(peerMarker)!
             ParkingSpotManager.shared.directionsToMarker(peerMarker, starting: startingLocationCoordinate) { (polyline, error) in
                 guard error == nil else {
                     print(error!)

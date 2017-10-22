@@ -142,6 +142,8 @@
 		88F41F5B1F9C926E00E61DCF /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		88F41F5D1F9C978500E61DCF /* ParkBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkBooking.swift; sourceTree = "<group>"; };
 		88F41F5F1F9C998400E61DCF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		88F41F611F9CA86000E61DCF /* OmniPark.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OmniPark.entitlements; sourceTree = "<group>"; };
+		88F41F621F9CA86500E61DCF /* watchapp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "watchapp Extension.entitlements"; sourceTree = "<group>"; };
 		A1BB609092067954DCDC4990 /* Pods_watchapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04F599538D62DF6784CABEA /* Pods-OminPark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OminPark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OminPark/Pods-OminPark.debug.xcconfig"; sourceTree = "<group>"; };
 		BA3E2CAF70DA126D7E9AACA6 /* Pods-watchapp Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchapp Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchapp Extension/Pods-watchapp Extension.release.xcconfig"; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		88F1D4FF1F9BD8D9007B0DA3 = {
 			isa = PBXGroup;
 			children = (
+				88F41F611F9CA86000E61DCF /* OmniPark.entitlements */,
 				88F1D50A1F9BD8D9007B0DA3 /* OminPark */,
 				88F1D5221F9BDA21007B0DA3 /* watchapp */,
 				88F1D5311F9BDA21007B0DA3 /* watchapp Extension */,
@@ -268,6 +271,7 @@
 		88F1D5311F9BDA21007B0DA3 /* watchapp Extension */ = {
 			isa = PBXGroup;
 			children = (
+				88F41F621F9CA86500E61DCF /* watchapp Extension.entitlements */,
 				88F1D5321F9BDA21007B0DA3 /* InterfaceController.swift */,
 				88F1D5341F9BDA21007B0DA3 /* ExtensionDelegate.swift */,
 				88F1D5361F9BDA21007B0DA3 /* NotificationController.swift */,
@@ -436,7 +440,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -449,7 +453,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -847,6 +851,7 @@
 			baseConfigurationReference = 41E6201CE634D89325D223BE /* Pods-OmniPark.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OmniPark.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				INFOPLIST_FILE = OminPark/Info.plist;
@@ -863,6 +868,7 @@
 			baseConfigurationReference = 66FB8BD12622196981EC8FC8 /* Pods-OmniPark.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OmniPark.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				INFOPLIST_FILE = OminPark/Info.plist;
@@ -879,6 +885,7 @@
 			baseConfigurationReference = 657017B593B550264C17E1A2 /* Pods-watchapp Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "watchapp Extension/watchapp Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				INFOPLIST_FILE = "watchapp Extension/Info.plist";
@@ -898,6 +905,7 @@
 			baseConfigurationReference = BA3E2CAF70DA126D7E9AACA6 /* Pods-watchapp Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "watchapp Extension/watchapp Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				INFOPLIST_FILE = "watchapp Extension/Info.plist";
