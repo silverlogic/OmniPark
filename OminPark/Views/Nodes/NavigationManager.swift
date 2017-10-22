@@ -8,7 +8,7 @@
 
 import ARKit
 
-let hallDuration: TimeInterval = 12.0
+let hallDuration: TimeInterval = 9.0
 
 class NavigationManager {
     
