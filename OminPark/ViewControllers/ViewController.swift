@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         sceneView.scene = scene
         sceneView.session.delegate = self
         sceneView.showsStatistics = true
+        // @TODO: Debug turned off
 //        sceneView.debugOptions = [.showConstraints, .showLightExtents, ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         sceneView.autoenablesDefaultLighting = true
         sceneView.automaticallyUpdatesLighting = true
@@ -58,63 +59,6 @@ class ViewController: UIViewController {
 
 // MARK: - ARSCNViewDelegate
 extension ViewController: ARSCNViewDelegate {
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }
-    
-//    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-//        guard let planeAnchor = anchor as? ARPlaneAnchor else {
-//            return nil
-//        }
-//        let node = SCNNode()
-//        let planeGeometry = SCNBox(width: CGFloat(planeAnchor.extent.x), height: planeHeight, length: CGFloat(planeAnchor.extent.z), chamferRadius: 0.0)
-//        planeGeometry.firstMaterial?.diffuse.contents = UIColor.green.withAlphaComponent(0.1)
-//        planeGeometry.firstMaterial?.specular.contents = UIColor.white
-//        let planeNode = SCNNode(geometry: planeGeometry)
-//        planeNode.position = SCNVector3Make(planeAnchor.center.x, Float(planeHeight / 2), planeAnchor.center.z)
-//        //since SCNPlane is vertical, needs to be rotated -90 degrees on X axis to make a plane
-//        //planeNode.transform = SCNMatrix4MakeRotation(Float(-CGFloat.pi/2), 1, 0, 0)
-//        node.addChildNode(planeNode)
-//        anchors.append(planeAnchor)
-//        return node
-//    }
-//
-//    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-//        guard let planeAnchor = anchor as? ARPlaneAnchor, anchors.contains(planeAnchor) else {
-//            return
-//        }
-//        guard let planeNode = node.childNodes.first else {
-//            return
-//        }
-//
-//        planeNode.position = SCNVector3Make(planeAnchor.center.x, Float(planeHeight / 2), planeAnchor.center.z)
-//        if let plane = planeNode.geometry as? SCNBox {
-//            plane.width = CGFloat(planeAnchor.extent.x)
-//            plane.length = CGFloat(planeAnchor.extent.z)
-//            plane.height = planeHeight
-//        }
-//    }
 }
 
 
@@ -149,13 +93,6 @@ fileprivate extension ViewController {
             print("no result")
             return
         }
-//        DispatchQueue.main.async() { [unowned self] in
-//            self.sceneView.layer.sublayers?.removeAll()
-//            result.forEach({ region in
-//                self.highlightWord(box: region, frame: frame)
-//                region.characterBoxes?.forEach(self.highlightLetters)
-//            })
-//        }
         DispatchQueue.main.async { [unowned self] in
             guard result.count > 1,
                 let tl = result.filter({ $0.characterBoxes?.count == 8 }).first,
@@ -163,21 +100,11 @@ fileprivate extension ViewController {
                 print("WRONG TEXT")
                 return
             }
-//            let steps: [SCNNode: VNTextObservation] = [
-//                self.nodes[1]: tl,
-//                self.nodes[2]: tr,
-//            ]
-//            steps.forEach({
-//                guard let position = self.position(for: self.getTextRect(from: $0.value.characterBoxes!), from: frame) else { return }
-//                $0.key.position = position
-//            })
             guard let positionTl = self.position(for: self.getTextRect(from: tl.characterBoxes!), from: frame),
                   let positionTr = self.position(for: self.getTextRect(from: tr.characterBoxes!), from: frame) else {
                 print("WRONG POSITION")
                 return
             }
-//                let positionBl = self.position(for: self.getTextRect(from: bl.characterBoxes!), from: frame),
-//                let positionBr = self.position(for: self.getTextRect(from: br.characterBoxes!), from: frame) else { return }
             let angle = (positionTr.flatPoint() - positionTl.flatPoint()).angle() - CGFloat.pi * 0.01
             let node = self.nodes[0]
             if node.position == SCNVector3Zero {
@@ -196,9 +123,7 @@ fileprivate extension ViewController {
     
     func position(for textRect: TextRect, from frame: ARFrame) -> SCNVector3? {
         let point = CGPoint(x: 1 - (textRect.yMin + (textRect.yMax - textRect.yMin) / 2.0), y: 1 - (textRect.xMin + (textRect.xMax - textRect.xMin) / 2.0))
-        guard let position = frame.existingPlanePoint(for: point)?.position() else { return nil }
-//        print(point)
-        return position
+        return frame.existingPlanePoint(for: point)?.position()
     }
     
     struct TextRect {
@@ -227,38 +152,6 @@ fileprivate extension ViewController {
         return textRect
     }
     
-    func highlightWord(box: VNTextObservation, frame: ARFrame) {
-        guard let boxes = box.characterBoxes else {
-            return
-        }
-        let textRect = getTextRect(from: boxes)
-        
-        let xCord = textRect.xMax * sceneView.frame.size.width
-        let yCord = (1 - textRect.yMin) * sceneView.frame.size.height
-        let width = (textRect.xMin - textRect.xMax) * sceneView.frame.size.width
-        let height = (textRect.yMin - textRect.yMax) * sceneView.frame.size.height
-        
-        let outline = CALayer()
-        outline.frame = CGRect(x: xCord, y: yCord, width: width, height: height)
-        outline.borderWidth = 2.0
-        outline.borderColor = UIColor.red.cgColor
-        sceneView.layer.addSublayer(outline)
-    }
-    
-    func highlightLetters(_ box: VNRectangleObservation) {
-        let xCord = box.topLeft.x * sceneView.frame.size.width
-        let yCord = (1 - box.topLeft.y) * sceneView.frame.size.height
-        let width = (box.topRight.x - box.bottomLeft.x) * sceneView.frame.size.width
-        let height = (box.topLeft.y - box.bottomLeft.y) * sceneView.frame.size.height
-        
-        let outline = CALayer()
-        outline.frame = CGRect(x: xCord, y: yCord, width: width, height: height)
-        outline.borderWidth = 1.0
-        outline.borderColor = UIColor.blue.cgColor
-        
-        sceneView.layer.addSublayer(outline)
-    }
-    
     func showMapView() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mapViewController = storyboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
@@ -271,27 +164,16 @@ fileprivate extension ViewController {
 fileprivate extension ViewController {
     func fillUpDemoNodes() {
         let parkingArea = SCNBox(width: 0.5, height: planeHeight, length: 0.5, chamferRadius: 0)
-        parkingArea.firstMaterial?.diffuse.contents = UIColor.clear//UIColor.blue.withAlphaComponent(0.2)
-//        parkingSpace.firstMaterial?.specular.contents = UIColor.white
+        parkingArea.firstMaterial?.diffuse.contents = UIColor.clear
         let node = SCNNode(geometry: parkingArea)
         nodes.append(node)
-//        sceneView.scene.rootNode.addChildNode(node)
         let arrows = NavigationManager.shared.arrowsForNavigation()
         arrows.forEach { arrow in
             arrow.position = arrow.position + SCNVector3(-0.065, 0.001, 0.26)
-//            arrow.eulerAngles = SCNVector3(0.0, CGFloat.pi * 1.5, 0.0)
             node.addChildNode(arrow)
         }
         NavigationManager.shared.run(arrows)
         drawParkingSpaces(node)
-//        for _ in 0..<4 {
-//            let pinNode = SCNSphere(radius: 0.005)
-//            pinNode.firstMaterial?.diffuse.contents = UIColor.red.withAlphaComponent(0.8)
-//            pinNode.firstMaterial?.specular.contents = UIColor.white
-//            let node = SCNNode(geometry: pinNode)
-//            nodes.append(node)
-//            sceneView.scene.rootNode.addChildNode(node)
-//        }
     }
     
     func drawParkingSpaces(_ node: SCNNode) {
