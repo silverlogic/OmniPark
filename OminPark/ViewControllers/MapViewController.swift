@@ -36,7 +36,7 @@ final class MapViewController: UIViewController {
         "yes, give me directions to it"
     ]
     private var mapMarkers: [GMSMarker] = []
-    private let reserveParkingText = "I have found a peer to peer parking. Will you like to reserve it?"
+    private let reserveParkingText = "I have found a peer to peer parking spot. Do you want directions?"
     private let unrecognizedSpeechText = "I couldn't understand. Repeat that again?"
     private let directionsSet = "Here are your directions"
     // Starting location Caesars Palace
@@ -195,21 +195,18 @@ private extension MapViewController {
             }
         } else if validCommand.contains("give") {
             arButton.animate(.position(CGPoint(x: 30, y: arButton.frame.center.y)),
-                             .spring(stiffness: 1, damping: 2),
+                             .spring(stiffness: 40, damping: 5),
                              .duration(0.01),
-                             .timingFunction(.easeIn),
                              .fadeIn)
-            appleMapButton.animate(.delay(0.01),
+            appleMapButton.animate(.delay(0.03),
                                    .position(CGPoint(x: 30, y: appleMapButton.frame.center.y)),
-                                   .spring(stiffness: 1, damping: 2),
+                                   .spring(stiffness: 40, damping: 5),
                                    .duration(0.01),
-                                   .timingFunction(.easeIn),
                                    .fadeIn)
-            googleMapButton.animate(.delay(0.03),
+            googleMapButton.animate(.delay(0.06),
                                     .position(CGPoint(x: 30, y: googleMapButton.frame.center.y)),
-                                    .spring(stiffness: 1, damping: 2),
+                                    .spring(stiffness: 40, damping: 5),
                                     .duration(0.01),
-                                    .timingFunction(.easeIn),
                                     .fadeIn)
             let utterance = AVSpeechUtterance(string: directionsSet)
             utterance.voice = voice

@@ -16,3 +16,9 @@ let BASE_URL = "\(baseHost)/api/v1"
 // MARK: - Google API Keys
 let GOOGLE_MAPS_API_KEY = "AIzaSyDO0m-G4h6VENAKvlRjIJfF4spNidPZ3Ww"
 let GOOGLE_DIRECTIONS_API_KEY = "AIzaSyDhuP-8a1IvVIDJww1kDm-FBoVcmRUwdqk"
+
+
+// MARK: - User credentials
+let EMAIL_DAVID = "dh@tsl.io"
+let EMAIL_ROB = "rd@tsl.io"
+let PASSWORD = "1234asdf"

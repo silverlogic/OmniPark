@@ -78,11 +78,11 @@ final class ParkingSpotManager {
                 do {
                     let parkingSpots = try decoder.decode([ParkingSpot].self, from: responseData)
                     self.parkingSpots = parkingSpots
+                    print("Parking spots retrieved")
                 } catch {
                     print("Error parsing response data for parking spots")
                     print(error)
                 }
-                print("doe")
             }
         }
     }
