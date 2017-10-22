@@ -83,38 +83,38 @@ extension ViewController: ARSCNViewDelegate {
         
     }
     
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        guard let planeAnchor = anchor as? ARPlaneAnchor else {
-            return nil
-        }
-        let node = SCNNode()
-        let planeGeometry = SCNBox(width: CGFloat(planeAnchor.extent.x), height: planeHeight, length: CGFloat(planeAnchor.extent.z), chamferRadius: 0.0)
-        planeGeometry.firstMaterial?.diffuse.contents = UIColor.green.withAlphaComponent(0.3)
-        planeGeometry.firstMaterial?.specular.contents = UIColor.white
-        let planeNode = SCNNode(geometry: planeGeometry)
-        planeNode.position = SCNVector3Make(planeAnchor.center.x, Float(planeHeight / 2), planeAnchor.center.z)
-        //since SCNPlane is vertical, needs to be rotated -90 degrees on X axis to make a plane
-        //planeNode.transform = SCNMatrix4MakeRotation(Float(-CGFloat.pi/2), 1, 0, 0)
-        node.addChildNode(planeNode)
-        anchors.append(planeAnchor)
-        return node
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        guard let planeAnchor = anchor as? ARPlaneAnchor, anchors.contains(planeAnchor) else {
-            return
-        }
-        guard let planeNode = node.childNodes.first else {
-            return
-        }
-        
-        planeNode.position = SCNVector3Make(planeAnchor.center.x, Float(planeHeight / 2), planeAnchor.center.z)
-        if let plane = planeNode.geometry as? SCNBox {
-            plane.width = CGFloat(planeAnchor.extent.x)
-            plane.length = CGFloat(planeAnchor.extent.z)
-            plane.height = planeHeight
-        }
-    }
+//    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+//        guard let planeAnchor = anchor as? ARPlaneAnchor else {
+//            return nil
+//        }
+//        let node = SCNNode()
+//        let planeGeometry = SCNBox(width: CGFloat(planeAnchor.extent.x), height: planeHeight, length: CGFloat(planeAnchor.extent.z), chamferRadius: 0.0)
+//        planeGeometry.firstMaterial?.diffuse.contents = UIColor.green.withAlphaComponent(0.1)
+//        planeGeometry.firstMaterial?.specular.contents = UIColor.white
+//        let planeNode = SCNNode(geometry: planeGeometry)
+//        planeNode.position = SCNVector3Make(planeAnchor.center.x, Float(planeHeight / 2), planeAnchor.center.z)
+//        //since SCNPlane is vertical, needs to be rotated -90 degrees on X axis to make a plane
+//        //planeNode.transform = SCNMatrix4MakeRotation(Float(-CGFloat.pi/2), 1, 0, 0)
+//        node.addChildNode(planeNode)
+//        anchors.append(planeAnchor)
+//        return node
+//    }
+//
+//    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+//        guard let planeAnchor = anchor as? ARPlaneAnchor, anchors.contains(planeAnchor) else {
+//            return
+//        }
+//        guard let planeNode = node.childNodes.first else {
+//            return
+//        }
+//
+//        planeNode.position = SCNVector3Make(planeAnchor.center.x, Float(planeHeight / 2), planeAnchor.center.z)
+//        if let plane = planeNode.geometry as? SCNBox {
+//            plane.width = CGFloat(planeAnchor.extent.x)
+//            plane.length = CGFloat(planeAnchor.extent.z)
+//            plane.height = planeHeight
+//        }
+//    }
 }
 
 
@@ -157,28 +157,28 @@ fileprivate extension ViewController {
             })
         }
         DispatchQueue.main.async { [unowned self] in
-            guard result.count > 3,
-                let tl = result.filter({ $0.characterBoxes?.count == 9 }).first,
-                let tr = result.filter({ $0.characterBoxes?.count == 11 }).first else {
-//                let bl = result.filter({ $0.characterBoxes?.count == 6 }).first,
-//                let br = result.filter({ $0.characterBoxes?.count == 7 }).first else {
+            guard result.count > 1,
+                let tl = result.filter({ $0.characterBoxes?.count == 8 }).first,
+                let tr = result.filter({ $0.characterBoxes?.count == 14 }).first else {
+                print("WRONG TEXT")
                 return
             }
-            let steps: [SCNNode: VNTextObservation] = [
-                self.nodes[1]: tl,
-                self.nodes[2]: tr,
-//                self.nodes[3]: bl,
-//                self.nodes[4]: br,
-            ]
+//            let steps: [SCNNode: VNTextObservation] = [
+//                self.nodes[1]: tl,
+//                self.nodes[2]: tr,
+//            ]
 //            steps.forEach({
 //                guard let position = self.position(for: self.getTextRect(from: $0.value.characterBoxes!), from: frame) else { return }
 //                $0.key.position = position
 //            })
             guard let positionTl = self.position(for: self.getTextRect(from: tl.characterBoxes!), from: frame),
-                let positionTr = self.position(for: self.getTextRect(from: tr.characterBoxes!), from: frame) else { return }
+                  let positionTr = self.position(for: self.getTextRect(from: tr.characterBoxes!), from: frame) else {
+                print("WRONG POSITION")
+                return
+            }
 //                let positionBl = self.position(for: self.getTextRect(from: bl.characterBoxes!), from: frame),
 //                let positionBr = self.position(for: self.getTextRect(from: br.characterBoxes!), from: frame) else { return }
-            let angle = (positionTr.flatPoint() - positionTl.flatPoint()).angle()
+            let angle = (positionTr.flatPoint() - positionTl.flatPoint()).angle() - CGFloat.pi * 0.01
             let node = self.nodes[0]
             if self.nodes[0].position == SCNVector3Zero {
                 node.position = positionTl
@@ -194,7 +194,7 @@ fileprivate extension ViewController {
     func position(for textRect: TextRect, from frame: ARFrame) -> SCNVector3? {
         let point = CGPoint(x: 1 - (textRect.yMin + (textRect.yMax - textRect.yMin) / 2.0), y: 1 - (textRect.xMin + (textRect.xMax - textRect.xMin) / 2.0))
         guard let position = frame.existingPlanePoint(for: point)?.position() else { return nil }
-        print(point)
+//        print(point)
         return position
     }
     
@@ -289,16 +289,16 @@ fileprivate extension ViewController {
 // MARK: - ARKit Stuff
 fileprivate extension ViewController {
     func fillUpDemoNodes() {
-        let parkingSpace = SCNBox(width: 0.5, height: planeHeight, length: 0.5, chamferRadius: 0)
-        parkingSpace.firstMaterial?.diffuse.contents = UIColor.blue.withAlphaComponent(0.8)
-        parkingSpace.firstMaterial?.specular.contents = UIColor.white
-        let node = SCNNode(geometry: parkingSpace)
+        let parkingArea = SCNBox(width: 0.5, height: planeHeight, length: 0.5, chamferRadius: 0)
+        parkingArea.firstMaterial?.diffuse.contents = UIColor.clear//UIColor.blue.withAlphaComponent(0.2)
+//        parkingSpace.firstMaterial?.specular.contents = UIColor.white
+        let node = SCNNode(geometry: parkingArea)
         nodes.append(node)
         sceneView.scene.rootNode.addChildNode(node)
         let arrows = NavigationManager.shared.arrowsForNavigation()
         arrows.forEach { arrow in
-            arrow.position = arrow.position + SCNVector3(0, 0.01, 0)
-            arrow.eulerAngles = SCNVector3(0.0, CGFloat.pi * 1.5, 0.0)
+            arrow.position = arrow.position + SCNVector3(-0.065, 0.001, 0.26)
+//            arrow.eulerAngles = SCNVector3(0.0, CGFloat.pi * 1.5, 0.0)
             node.addChildNode(arrow)
         }
         NavigationManager.shared.run(arrows)
@@ -310,5 +310,9 @@ fileprivate extension ViewController {
             nodes.append(node)
             sceneView.scene.rootNode.addChildNode(node)
         }
+    }
+    
+    func drawParkingSpaces() {
+        
     }
 }
