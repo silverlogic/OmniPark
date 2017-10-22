@@ -16,6 +16,8 @@
 		4DAE213F1F9C3E75003E2D5A /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE213E1F9C3E75003E2D5A /* NavigationManager.swift */; };
 		4DAE21431F9C5326003E2D5A /* SCNNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE21421F9C5326003E2D5A /* SCNNode+Extension.swift */; };
 		4DAE21451F9C5479003E2D5A /* BaseNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE21441F9C5479003E2D5A /* BaseNode.swift */; };
+		4DAE21471F9C7B2B003E2D5A /* ParkingLotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE21461F9C7B2B003E2D5A /* ParkingLotNode.swift */; };
+		4DAE21491F9C80A1003E2D5A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE21481F9C80A1003E2D5A /* UIColor+Extension.swift */; };
 		5F8480A2DE5397456B57D6F3 /* Pods_watchapp_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4561776948F5F234277F20 /* Pods_watchapp_Extension.framework */; };
 		65F19BE9C29EC2F7D91BDFF2 /* Pods_watchapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BB609092067954DCDC4990 /* Pods_watchapp.framework */; };
 		88F1D50C1F9BD8D9007B0DA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F1D50B1F9BD8D9007B0DA3 /* AppDelegate.swift */; };
@@ -88,6 +90,8 @@
 		4DAE213E1F9C3E75003E2D5A /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		4DAE21421F9C5326003E2D5A /* SCNNode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Extension.swift"; sourceTree = "<group>"; };
 		4DAE21441F9C5479003E2D5A /* BaseNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNode.swift; sourceTree = "<group>"; };
+		4DAE21461F9C7B2B003E2D5A /* ParkingLotNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingLotNode.swift; sourceTree = "<group>"; };
+		4DAE21481F9C80A1003E2D5A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		657017B593B550264C17E1A2 /* Pods-watchapp Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchapp Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchapp Extension/Pods-watchapp Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		6B27F19781BB0F8E2AE52A9A /* Pods_OminPark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OminPark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CD3352BEBC0FEAB539B009C /* Pods-OminPark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OminPark.release.xcconfig"; path = "Pods/Target Support Files/Pods-OminPark/Pods-OminPark.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				4DAE21371F9BF195003E2D5A /* SCNVector3+Extension.swift */,
 				4DAE21391F9BF27F003E2D5A /* CGPoint+Extension.swift */,
 				4DAE21421F9C5326003E2D5A /* SCNNode+Extension.swift */,
+				4DAE21481F9C80A1003E2D5A /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				4DAE21441F9C5479003E2D5A /* BaseNode.swift */,
 				4DAE213C1F9C24E6003E2D5A /* ArrowNode.swift */,
 				4DAE213E1F9C3E75003E2D5A /* NavigationManager.swift */,
+				4DAE21461F9C7B2B003E2D5A /* ParkingLotNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -570,7 +576,9 @@
 				88F1D54A1F9BE2AB007B0DA3 /* MapViewController.swift in Sources */,
 				4DAE213D1F9C24E6003E2D5A /* ArrowNode.swift in Sources */,
 				4DAE21381F9BF195003E2D5A /* SCNVector3+Extension.swift in Sources */,
+				4DAE21471F9C7B2B003E2D5A /* ParkingLotNode.swift in Sources */,
 				4DAE213A1F9BF27F003E2D5A /* CGPoint+Extension.swift in Sources */,
+				4DAE21491F9C80A1003E2D5A /* UIColor+Extension.swift in Sources */,
 				4DAE21361F9BF15E003E2D5A /* matrix_float4x4+Extension.swift in Sources */,
 				88F1D50C1F9BD8D9007B0DA3 /* AppDelegate.swift in Sources */,
 			);
