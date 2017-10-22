@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var visionRequests: [VNRequest] = []
     let planeHeight: CGFloat = 0.001
     var anchors: [ARAnchor] = []
+    var notShowingMap = true
     
     
     // MARK: - Lifecycle
@@ -35,6 +36,7 @@ class ViewController: UIViewController {
         sceneView.autoenablesDefaultLighting = true
         sceneView.automaticallyUpdatesLighting = true
         setupVisionRequests()
+        ParkingSpotManager.shared.fetchParkingSpots()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,11 +44,14 @@ class ViewController: UIViewController {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         sceneView.session.run(configuration, options: [.removeExistingAnchors, .resetTracking])
+        if notShowingMap {
+            showMapView()
+            notShowingMap = false
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        sceneView.session.pause()
     }
 }
 
@@ -199,5 +204,11 @@ fileprivate extension ViewController {
         outline.borderColor = UIColor.blue.cgColor
         
         sceneView.layer.addSublayer(outline)
+    }
+    
+    func showMapView() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mapViewController = storyboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        present(mapViewController, animated: true, completion: nil)
     }
 }

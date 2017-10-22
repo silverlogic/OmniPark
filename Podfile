@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '11.0'
 
-target 'OminPark' do
+target 'OmniPark' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
@@ -9,6 +9,7 @@ target 'OminPark' do
   pod 'Alamofire', '~> 4.5.1'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'Motion', '~> 1.2.2'
   pod 'SwiftyJSON', '~> 4.0.0-alpha.1'
 
   post_install do |installer|

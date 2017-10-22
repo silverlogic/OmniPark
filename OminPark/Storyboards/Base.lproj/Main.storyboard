@@ -1,34 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T3h-nD-652">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="OminPark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BV1-FR-VrT" customClass="ViewController" customModule="OminPark" customModuleProvider="target" sceneMemberID="viewController">
                     <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </arscnView>
+                    <navigationItem key="navigationItem" id="q8b-M8-aNW"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="314" y="115"/>
+            <point key="canvasLocation" x="652" y="114.69265367316342"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="pD7-Ew-8Qf">
             <objects>
-                <viewController id="VhW-Y6-8s6" customClass="MapViewController" customModule="OminPark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="VhW-Y6-8s6" customClass="MapViewController" customModule="OminPark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JY5-ee-mSD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,23 +46,150 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyv-XZ-Ry1" customClass="CustomView" customModule="OminPark" customModuleProvider="target">
+                                <rect key="frame" x="7" y="568" width="361" height="59"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3377 S Las Vegas Blvd, Las Vegas, NV 89109" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQM-CR-Lvn">
+                                        <rect key="frame" x="8" y="3" width="345" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="93w-C4-uox"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVw-Kx-je2">
+                                        <rect key="frame" x="8" y="36" width="345" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Nkd-q5-JRp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="3T6-jJ-vsn"/>
+                                    <constraint firstAttribute="trailing" secondItem="hVw-Kx-je2" secondAttribute="trailing" constant="8" id="94r-qv-wE7"/>
+                                    <constraint firstItem="mQM-CR-Lvn" firstAttribute="top" secondItem="yyv-XZ-Ry1" secondAttribute="top" constant="3" id="Rok-r2-2fi"/>
+                                    <constraint firstItem="mQM-CR-Lvn" firstAttribute="leading" secondItem="yyv-XZ-Ry1" secondAttribute="leading" constant="8" id="SrJ-BL-AdU"/>
+                                    <constraint firstItem="hVw-Kx-je2" firstAttribute="leading" secondItem="yyv-XZ-Ry1" secondAttribute="leading" constant="8" id="gz5-zi-zEN"/>
+                                    <constraint firstAttribute="trailing" secondItem="mQM-CR-Lvn" secondAttribute="trailing" constant="8" id="poS-sw-ciT"/>
+                                    <constraint firstItem="hVw-Kx-je2" firstAttribute="top" secondItem="mQM-CR-Lvn" secondAttribute="bottom" constant="12" id="sOQ-3s-aUB"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgX-40-d56" customClass="CircleButton" customModule="OminPark" customModuleProvider="target">
+                                <rect key="frame" x="318" y="510" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.792156862745098" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4Vl-M8-gka"/>
+                                    <constraint firstAttribute="width" constant="50" id="rM6-cL-8fY"/>
+                                </constraints>
+                                <state key="normal" image="white-microphone"/>
+                                <connections>
+                                    <action selector="micButtonTapped" destination="VhW-Y6-8s6" eventType="touchUpInside" id="UG9-5q-590"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffX-BY-mu3" customClass="CircleButton" customModule="OminPark" customModuleProvider="target">
+                                <rect key="frame" x="318" y="24" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.79215686269999996" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="c5S-AY-6BF"/>
+                                    <constraint firstAttribute="width" constant="50" id="tNq-fO-GLh"/>
+                                </constraints>
+                                <state key="normal" image="settings-gear"/>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eQ-Wx-Be2" customClass="CircleButton" customModule="OminPark" customModuleProvider="target">
+                                <rect key="frame" x="-55" y="511" width="50" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yko-0P-OAQ"/>
+                                    <constraint firstAttribute="width" constant="50" id="z0v-Iv-EDe"/>
+                                </constraints>
+                                <state key="normal" image="google-map"/>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFS-Ao-W6K" customClass="CircleButton" customModule="OminPark" customModuleProvider="target">
+                                <rect key="frame" x="-55" y="454" width="50" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6TT-0o-ove"/>
+                                    <constraint firstAttribute="height" constant="50" id="sly-aS-9m4"/>
+                                </constraints>
+                                <state key="normal" image="apple-map"/>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUy-ic-7L7" customClass="CircleButton" customModule="OminPark" customModuleProvider="target">
+                                <rect key="frame" x="-55" y="397" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.79215686269999996" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="CJS-bz-v7N"/>
+                                    <constraint firstAttribute="width" constant="50" id="yJP-KU-W2q"/>
+                                </constraints>
+                                <state key="normal" image="ar-icon"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gtp-hp-8Hw" firstAttribute="trailing" secondItem="pYg-eK-YUL" secondAttribute="trailing" id="3Lp-Ei-XJY"/>
+                            <constraint firstItem="0eQ-Wx-Be2" firstAttribute="leading" secondItem="pYg-eK-YUL" secondAttribute="leading" constant="-55" id="8lX-yo-lcJ"/>
                             <constraint firstItem="gtp-hp-8Hw" firstAttribute="leading" secondItem="pYg-eK-YUL" secondAttribute="leading" id="KkR-l7-aqa"/>
+                            <constraint firstItem="pYg-eK-YUL" firstAttribute="trailing" secondItem="yyv-XZ-Ry1" secondAttribute="trailing" constant="7" id="MF1-3y-P8f"/>
+                            <constraint firstItem="pYg-eK-YUL" firstAttribute="trailing" secondItem="ffX-BY-mu3" secondAttribute="trailing" constant="7" id="Nrx-Ac-oZd"/>
+                            <constraint firstItem="yyv-XZ-Ry1" firstAttribute="top" secondItem="0eQ-Wx-Be2" secondAttribute="bottom" constant="7" id="V0O-QB-2WF"/>
+                            <constraint firstItem="ffX-BY-mu3" firstAttribute="top" secondItem="JY5-ee-mSD" secondAttribute="top" constant="24" id="Ved-2n-wDn"/>
                             <constraint firstItem="gtp-hp-8Hw" firstAttribute="bottom" secondItem="pYg-eK-YUL" secondAttribute="bottom" id="djv-N0-HZ4"/>
+                            <constraint firstItem="yyv-XZ-Ry1" firstAttribute="leading" secondItem="pYg-eK-YUL" secondAttribute="leading" constant="7" id="exS-V3-XGG"/>
+                            <constraint firstItem="rFS-Ao-W6K" firstAttribute="leading" secondItem="pYg-eK-YUL" secondAttribute="leading" constant="-55" id="f0w-0c-Yr7"/>
+                            <constraint firstItem="yyv-XZ-Ry1" firstAttribute="top" secondItem="QgX-40-d56" secondAttribute="bottom" constant="8" id="fjI-uP-hP5"/>
+                            <constraint firstItem="vUy-ic-7L7" firstAttribute="leading" secondItem="pYg-eK-YUL" secondAttribute="leading" constant="-55" id="lWC-n1-sVI"/>
                             <constraint firstItem="gtp-hp-8Hw" firstAttribute="top" secondItem="JY5-ee-mSD" secondAttribute="top" id="u8F-1H-qRo"/>
+                            <constraint firstItem="0eQ-Wx-Be2" firstAttribute="top" secondItem="rFS-Ao-W6K" secondAttribute="bottom" constant="7" id="vJK-pW-jFY"/>
+                            <constraint firstItem="pYg-eK-YUL" firstAttribute="bottom" secondItem="yyv-XZ-Ry1" secondAttribute="bottom" constant="40" id="vnD-nl-qyK"/>
+                            <constraint firstItem="rFS-Ao-W6K" firstAttribute="top" secondItem="vUy-ic-7L7" secondAttribute="bottom" constant="7" id="w6b-sj-LYh"/>
+                            <constraint firstItem="pYg-eK-YUL" firstAttribute="trailing" secondItem="QgX-40-d56" secondAttribute="trailing" constant="7" id="z2g-wR-NOK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pYg-eK-YUL"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="appleMapButton" destination="rFS-Ao-W6K" id="igw-HV-SgH"/>
+                        <outlet property="arButton" destination="vUy-ic-7L7" id="yJa-df-est"/>
+                        <outlet property="googleMapButton" destination="0eQ-Wx-Be2" id="rD0-mk-ZLl"/>
                         <outlet property="mapView" destination="gtp-hp-8Hw" id="BQ9-Ll-GD7"/>
+                        <outlet property="micButton" destination="QgX-40-d56" id="g3N-6B-FXX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DTf-2l-Ga7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1058" y="115"/>
+            <point key="canvasLocation" x="1396" y="114.69265367316342"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ea8-IL-Kku">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="T3h-nD-652" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OuW-wz-pv0">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="BV1-FR-VrT" kind="relationship" relationship="rootViewController" id="KDt-Vq-IZ4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6dd-an-vuo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-151" y="115"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="apple-map" width="70" height="70"/>
+        <image name="ar-icon" width="30" height="30"/>
+        <image name="google-map" width="70" height="70"/>
+        <image name="settings-gear" width="30" height="30"/>
+        <image name="white-microphone" width="30" height="30"/>
+    </resources>
 </document>
