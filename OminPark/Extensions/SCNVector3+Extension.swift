@@ -8,6 +8,11 @@
 
 import SceneKit
 
+enum PointType {
+    case horizontal
+    case vertical
+}
+
 extension SCNVector3 {
     func length() -> Float {
         return sqrtf(x * x + y * y + z * z)
@@ -15,6 +20,15 @@ extension SCNVector3 {
     
     func distanceFromVector(_ vector: SCNVector3) -> Float {
         return (self - vector).length()
+    }
+    
+    func flatPoint(_ type: PointType = .horizontal) -> CGPoint {
+        switch type {
+        case .horizontal:
+            return CGPoint(x: CGFloat(x), y: CGFloat(z))
+        case .vertical:
+            return CGPoint(x: CGFloat(x), y: CGFloat(y))
+        }
     }
 }
 
