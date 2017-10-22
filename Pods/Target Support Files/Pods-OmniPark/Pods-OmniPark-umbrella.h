@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_OminParkVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_OminParkVersionString[];
+FOUNDATION_EXPORT double Pods_OmniParkVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_OmniParkVersionString[];
 

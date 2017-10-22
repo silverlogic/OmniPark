@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E4E071D799D33219D9CAAB7 /* Pods_OminPark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B27F19781BB0F8E2AE52A9A /* Pods_OminPark.framework */; };
 		5F8480A2DE5397456B57D6F3 /* Pods_watchapp_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4561776948F5F234277F20 /* Pods_watchapp_Extension.framework */; };
 		65F19BE9C29EC2F7D91BDFF2 /* Pods_watchapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BB609092067954DCDC4990 /* Pods_watchapp.framework */; };
+		7FADC38F5F5253B078092783 /* Pods_OmniPark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE2134BD9C9E92673514915 /* Pods_OmniPark.framework */; };
 		88F1D50C1F9BD8D9007B0DA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F1D50B1F9BD8D9007B0DA3 /* AppDelegate.swift */; };
 		88F1D50E1F9BD8D9007B0DA3 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 88F1D50D1F9BD8D9007B0DA3 /* art.scnassets */; };
 		88F1D5101F9BD8D9007B0DA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F1D50F1F9BD8D9007B0DA3 /* ViewController.swift */; };
@@ -25,6 +25,11 @@
 		88F1D5391F9BDA21007B0DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88F1D5381F9BDA21007B0DA3 /* Assets.xcassets */; };
 		88F1D53E1F9BDA21007B0DA3 /* watchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 88F1D5211F9BDA21007B0DA3 /* watchapp.app */; };
 		88F1D54A1F9BE2AB007B0DA3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F1D5491F9BE2AB007B0DA3 /* MapViewController.swift */; };
+		88F41F4C1F9C1C3800E61DCF /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F41F4B1F9C1C3800E61DCF /* CustomView.swift */; };
+		88F41F501F9C1DB500E61DCF /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F41F4F1F9C1DB500E61DCF /* CircleButton.swift */; };
+		88F41F551F9C3E7A00E61DCF /* ParkingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F41F541F9C3E7A00E61DCF /* ParkingSpot.swift */; };
+		88F41F581F9C409300E61DCF /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F41F571F9C409300E61DCF /* NetworkClient.swift */; };
+		88F41F5A1F9C5F5000E61DCF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F41F591F9C5F5000E61DCF /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,10 +77,13 @@
 /* Begin PBXFileReference section */
 		002D4C73CA1960205A754C70 /* Pods-watchapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchapp/Pods-watchapp.debug.xcconfig"; sourceTree = "<group>"; };
 		3E4561776948F5F234277F20 /* Pods_watchapp_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchapp_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41E6201CE634D89325D223BE /* Pods-OmniPark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniPark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OmniPark/Pods-OmniPark.debug.xcconfig"; sourceTree = "<group>"; };
+		4CE2134BD9C9E92673514915 /* Pods_OmniPark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniPark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		657017B593B550264C17E1A2 /* Pods-watchapp Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchapp Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchapp Extension/Pods-watchapp Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		66FB8BD12622196981EC8FC8 /* Pods-OmniPark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniPark.release.xcconfig"; path = "Pods/Target Support Files/Pods-OmniPark/Pods-OmniPark.release.xcconfig"; sourceTree = "<group>"; };
 		6B27F19781BB0F8E2AE52A9A /* Pods_OminPark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OminPark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CD3352BEBC0FEAB539B009C /* Pods-OminPark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OminPark.release.xcconfig"; path = "Pods/Target Support Files/Pods-OminPark/Pods-OminPark.release.xcconfig"; sourceTree = "<group>"; };
-		88F1D5081F9BD8D9007B0DA3 /* OminPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OminPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		88F1D5081F9BD8D9007B0DA3 /* OmniPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmniPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F1D50B1F9BD8D9007B0DA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88F1D50D1F9BD8D9007B0DA3 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		88F1D50F1F9BD8D9007B0DA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +103,11 @@
 		88F1D53A1F9BDA21007B0DA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88F1D53B1F9BDA21007B0DA3 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		88F1D5491F9BE2AB007B0DA3 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		88F41F4B1F9C1C3800E61DCF /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		88F41F4F1F9C1DB500E61DCF /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		88F41F541F9C3E7A00E61DCF /* ParkingSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingSpot.swift; sourceTree = "<group>"; };
+		88F41F571F9C409300E61DCF /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		88F41F591F9C5F5000E61DCF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A1BB609092067954DCDC4990 /* Pods_watchapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04F599538D62DF6784CABEA /* Pods-OminPark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OminPark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OminPark/Pods-OminPark.debug.xcconfig"; sourceTree = "<group>"; };
 		BA3E2CAF70DA126D7E9AACA6 /* Pods-watchapp Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchapp Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchapp Extension/Pods-watchapp Extension.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,7 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E4E071D799D33219D9CAAB7 /* Pods_OminPark.framework in Frameworks */,
+				7FADC38F5F5253B078092783 /* Pods_OmniPark.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +148,7 @@
 				6B27F19781BB0F8E2AE52A9A /* Pods_OminPark.framework */,
 				A1BB609092067954DCDC4990 /* Pods_watchapp.framework */,
 				3E4561776948F5F234277F20 /* Pods_watchapp_Extension.framework */,
+				4CE2134BD9C9E92673514915 /* Pods_OmniPark.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,7 +168,7 @@
 		88F1D5091F9BD8D9007B0DA3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				88F1D5081F9BD8D9007B0DA3 /* OminPark.app */,
+				88F1D5081F9BD8D9007B0DA3 /* OmniPark.app */,
 				88F1D5211F9BDA21007B0DA3 /* watchapp.app */,
 				88F1D52D1F9BDA21007B0DA3 /* watchapp Extension.appex */,
 			);
@@ -164,10 +178,13 @@
 		88F1D50A1F9BD8D9007B0DA3 /* OminPark */ = {
 			isa = PBXGroup;
 			children = (
+				88F1D5471F9BE26A007B0DA3 /* Storyboards */,
 				88F1D54B1F9BE892007B0DA3 /* Views */,
 				88F1D5481F9BE284007B0DA3 /* ViewControllers */,
-				88F1D5471F9BE26A007B0DA3 /* Storyboards */,
+				88F41F531F9C3E5300E61DCF /* Models */,
+				88F41F561F9C407500E61DCF /* Utilities */,
 				88F1D50B1F9BD8D9007B0DA3 /* AppDelegate.swift */,
+				88F41F591F9C5F5000E61DCF /* Constants.swift */,
 				88F1D50D1F9BD8D9007B0DA3 /* art.scnassets */,
 				88F1D5141F9BD8D9007B0DA3 /* Assets.xcassets */,
 				88F1D5191F9BD8D9007B0DA3 /* Info.plist */,
@@ -219,8 +236,42 @@
 		88F1D54B1F9BE892007B0DA3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				88F41F4E1F9C1CA200E61DCF /* UIButton */,
+				88F41F4A1F9C1C1600E61DCF /* UIView */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		88F41F4A1F9C1C1600E61DCF /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				88F41F4B1F9C1C3800E61DCF /* CustomView.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		88F41F4E1F9C1CA200E61DCF /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				88F41F4F1F9C1DB500E61DCF /* CircleButton.swift */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		88F41F531F9C3E5300E61DCF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				88F41F541F9C3E7A00E61DCF /* ParkingSpot.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		88F41F561F9C407500E61DCF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				88F41F571F9C409300E61DCF /* NetworkClient.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		F6EFAEC3EEF97AB9D25D2C93 /* Pods */ = {
@@ -232,6 +283,8 @@
 				E96A9A7E354C273C46F3320D /* Pods-watchapp.release.xcconfig */,
 				657017B593B550264C17E1A2 /* Pods-watchapp Extension.debug.xcconfig */,
 				BA3E2CAF70DA126D7E9AACA6 /* Pods-watchapp Extension.release.xcconfig */,
+				41E6201CE634D89325D223BE /* Pods-OmniPark.debug.xcconfig */,
+				66FB8BD12622196981EC8FC8 /* Pods-OmniPark.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -239,9 +292,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		88F1D5071F9BD8D9007B0DA3 /* OminPark */ = {
+		88F1D5071F9BD8D9007B0DA3 /* OmniPark */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 88F1D51C1F9BD8D9007B0DA3 /* Build configuration list for PBXNativeTarget "OminPark" */;
+			buildConfigurationList = 88F1D51C1F9BD8D9007B0DA3 /* Build configuration list for PBXNativeTarget "OmniPark" */;
 			buildPhases = (
 				6F38676089BA406F5D9B1CB8 /* [CP] Check Pods Manifest.lock */,
 				88F1D5041F9BD8D9007B0DA3 /* Sources */,
@@ -256,9 +309,9 @@
 			dependencies = (
 				88F1D53D1F9BDA21007B0DA3 /* PBXTargetDependency */,
 			);
-			name = OminPark;
+			name = OmniPark;
 			productName = OminPark;
-			productReference = 88F1D5081F9BD8D9007B0DA3 /* OminPark.app */;
+			productReference = 88F1D5081F9BD8D9007B0DA3 /* OmniPark.app */;
 			productType = "com.apple.product-type.application";
 		};
 		88F1D5201F9BDA21007B0DA3 /* watchapp */ = {
@@ -314,6 +367,11 @@
 					88F1D5071F9BD8D9007B0DA3 = {
 						CreatedOnToolsVersion = 9.0.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					88F1D5201F9BDA21007B0DA3 = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -322,6 +380,11 @@
 					88F1D52C1F9BDA21007B0DA3 = {
 						CreatedOnToolsVersion = 9.0.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -338,7 +401,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				88F1D5071F9BD8D9007B0DA3 /* OminPark */,
+				88F1D5071F9BD8D9007B0DA3 /* OmniPark */,
 				88F1D5201F9BDA21007B0DA3 /* watchapp */,
 				88F1D52C1F9BDA21007B0DA3 /* watchapp Extension */,
 			);
@@ -398,7 +461,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-OminPark/Pods-OminPark-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-OmniPark/Pods-OmniPark-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
@@ -408,7 +471,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OminPark/Pods-OminPark-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OmniPark/Pods-OmniPark-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		48FDE9F05ED8E0EF3AC98178 /* [CP] Check Pods Manifest.lock */ = {
@@ -435,18 +498,20 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-OminPark/Pods-OminPark-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-OmniPark/Pods-OmniPark-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OminPark/Pods-OminPark-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OmniPark/Pods-OmniPark-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6F38676089BA406F5D9B1CB8 /* [CP] Check Pods Manifest.lock */ = {
@@ -460,7 +525,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OminPark-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-OmniPark-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -522,9 +587,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F41F501F9C1DB500E61DCF /* CircleButton.swift in Sources */,
 				88F1D5101F9BD8D9007B0DA3 /* ViewController.swift in Sources */,
+				88F41F551F9C3E7A00E61DCF /* ParkingSpot.swift in Sources */,
+				88F41F4C1F9C1C3800E61DCF /* CustomView.swift in Sources */,
+				88F41F581F9C409300E61DCF /* NetworkClient.swift in Sources */,
 				88F1D54A1F9BE2AB007B0DA3 /* MapViewController.swift in Sources */,
 				88F1D50C1F9BD8D9007B0DA3 /* AppDelegate.swift in Sources */,
+				88F41F5A1F9C5F5000E61DCF /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,14 +760,14 @@
 		};
 		88F1D51D1F9BD8D9007B0DA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B04F599538D62DF6784CABEA /* Pods-OminPark.debug.xcconfig */;
+			baseConfigurationReference = 41E6201CE634D89325D223BE /* Pods-OmniPark.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				INFOPLIST_FILE = OminPark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.OminPark;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.OmniPark;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -706,14 +776,14 @@
 		};
 		88F1D51E1F9BD8D9007B0DA3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CD3352BEBC0FEAB539B009C /* Pods-OminPark.release.xcconfig */;
+			baseConfigurationReference = 66FB8BD12622196981EC8FC8 /* Pods-OmniPark.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				INFOPLIST_FILE = OminPark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.OminPark;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.OmniPark;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -729,7 +799,7 @@
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				INFOPLIST_FILE = "watchapp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.OminPark.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.OmniPark.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -748,7 +818,7 @@
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				INFOPLIST_FILE = "watchapp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.OminPark.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.OmniPark.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -768,7 +838,7 @@
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				IBSC_MODULE = watchapp_Extension;
 				INFOPLIST_FILE = watchapp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.OminPark.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.OmniPark.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -788,7 +858,7 @@
 				DEVELOPMENT_TEAM = 4SB3F2S2K3;
 				IBSC_MODULE = watchapp_Extension;
 				INFOPLIST_FILE = watchapp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.OminPark.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverlogic.OmniPark.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -810,7 +880,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		88F1D51C1F9BD8D9007B0DA3 /* Build configuration list for PBXNativeTarget "OminPark" */ = {
+		88F1D51C1F9BD8D9007B0DA3 /* Build configuration list for PBXNativeTarget "OmniPark" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88F1D51D1F9BD8D9007B0DA3 /* Debug */,
