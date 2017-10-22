@@ -13,7 +13,7 @@ class ArrowNode: BaseNode {
     // MARK: - Initializers
     override init() {
         super.init()
-        let width: CGFloat = 0.01
+        let width: CGFloat = 0.05
         let subNode = SCNNode()
         addChildNode(subNode)
         let plane = SCNPlane(width: width, height: width * 0.602)
