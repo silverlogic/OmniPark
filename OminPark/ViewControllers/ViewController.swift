@@ -158,22 +158,35 @@ fileprivate extension ViewController {
         }
         DispatchQueue.main.async { [unowned self] in
             guard result.count > 3,
-                let tl = result.filter({ $0.characterBoxes?.count == 4 }).first,
-                let tr = result.filter({ $0.characterBoxes?.count == 5 }).first,
-                let bl = result.filter({ $0.characterBoxes?.count == 6 }).first,
-                let br = result.filter({ $0.characterBoxes?.count == 7 }).first else {
+                let tl = result.filter({ $0.characterBoxes?.count == 9 }).first,
+                let tr = result.filter({ $0.characterBoxes?.count == 11 }).first else {
+//                let bl = result.filter({ $0.characterBoxes?.count == 6 }).first,
+//                let br = result.filter({ $0.characterBoxes?.count == 7 }).first else {
                 return
             }
             let steps: [SCNNode: VNTextObservation] = [
                 self.nodes[1]: tl,
                 self.nodes[2]: tr,
-                self.nodes[3]: bl,
-                self.nodes[4]: br,
+//                self.nodes[3]: bl,
+//                self.nodes[4]: br,
             ]
-            steps.forEach({
-                guard let position = self.position(for: self.getTextRect(from: $0.value.characterBoxes!), from: frame) else { return }
-                $0.key.position = position
-            })
+//            steps.forEach({
+//                guard let position = self.position(for: self.getTextRect(from: $0.value.characterBoxes!), from: frame) else { return }
+//                $0.key.position = position
+//            })
+            guard let positionTl = self.position(for: self.getTextRect(from: tl.characterBoxes!), from: frame),
+                let positionTr = self.position(for: self.getTextRect(from: tr.characterBoxes!), from: frame) else { return }
+//                let positionBl = self.position(for: self.getTextRect(from: bl.characterBoxes!), from: frame),
+//                let positionBr = self.position(for: self.getTextRect(from: br.characterBoxes!), from: frame) else { return }
+            let angle = (positionTr.flatPoint() - positionTl.flatPoint()).angle()
+            let node = self.nodes[0]
+            if self.nodes[0].position == SCNVector3Zero {
+                node.position = positionTl
+            } else {
+                let moveAction = SCNAction.move(to: positionTl, duration: 2)
+                node.runAction(moveAction)
+            }
+            node.eulerAngles = SCNVector3(0, angle, 0)
             print("found!!!")
         }
     }
@@ -276,10 +289,12 @@ fileprivate extension ViewController {
 // MARK: - ARKit Stuff
 fileprivate extension ViewController {
     func fillUpDemoNodes() {
-        let parkingSpace = SCNBox(width: 0, height: planeHeight, length: 0, chamferRadius: 0)
-        parkingSpace.firstMaterial?.diffuse.contents = UIColor.red.withAlphaComponent(0.5)
+        let parkingSpace = SCNBox(width: 0.5, height: planeHeight, length: 0.5, chamferRadius: 0)
+        parkingSpace.firstMaterial?.diffuse.contents = UIColor.blue.withAlphaComponent(0.8)
         parkingSpace.firstMaterial?.specular.contents = UIColor.white
-        nodes.append(SCNNode(geometry: parkingSpace))
+        let node = SCNNode(geometry: parkingSpace)
+        nodes.append(node)
+        sceneView.scene.rootNode.addChildNode(node)
         for _ in 0..<4 {
             let pinNode = SCNSphere(radius: 0.005)
             pinNode.firstMaterial?.diffuse.contents = UIColor.red.withAlphaComponent(0.8)
