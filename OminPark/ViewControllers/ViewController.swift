@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         sceneView.scene = scene
         sceneView.session.delegate = self
         sceneView.showsStatistics = true
-        sceneView.debugOptions = [.showConstraints, .showLightExtents, ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+//        sceneView.debugOptions = [.showConstraints, .showLightExtents, ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         sceneView.autoenablesDefaultLighting = true
         sceneView.automaticallyUpdatesLighting = true
         fillUpDemoNodes()
@@ -149,13 +149,13 @@ fileprivate extension ViewController {
             print("no result")
             return
         }
-        DispatchQueue.main.async() { [unowned self] in
-            self.sceneView.layer.sublayers?.removeAll()
-            result.forEach({ region in
-                self.highlightWord(box: region, frame: frame)
-                region.characterBoxes?.forEach(self.highlightLetters)
-            })
-        }
+//        DispatchQueue.main.async() { [unowned self] in
+//            self.sceneView.layer.sublayers?.removeAll()
+//            result.forEach({ region in
+//                self.highlightWord(box: region, frame: frame)
+//                region.characterBoxes?.forEach(self.highlightLetters)
+//            })
+//        }
         DispatchQueue.main.async { [unowned self] in
             guard result.count > 1,
                 let tl = result.filter({ $0.characterBoxes?.count == 8 }).first,
@@ -180,13 +180,16 @@ fileprivate extension ViewController {
 //                let positionBr = self.position(for: self.getTextRect(from: br.characterBoxes!), from: frame) else { return }
             let angle = (positionTr.flatPoint() - positionTl.flatPoint()).angle() - CGFloat.pi * 0.01
             let node = self.nodes[0]
-            if self.nodes[0].position == SCNVector3Zero {
+            if node.position == SCNVector3Zero {
                 node.position = positionTl
+                node.eulerAngles = SCNVector3(0, angle, 0)
+                self.sceneView.scene.rootNode.addChildNode(node)
             } else {
-                let moveAction = SCNAction.move(to: positionTl, duration: 2)
-                node.runAction(moveAction)
+                let duration: TimeInterval = 1.0
+                let moveAction = SCNAction.move(to: positionTl, duration: duration)
+                let rotateAction = SCNAction.rotateTo(x: 0, y: angle, z: 0, duration: duration)
+                node.runAction(SCNAction.group([moveAction, rotateAction]))
             }
-            node.eulerAngles = SCNVector3(0, angle, 0)
             print("found!!!")
         }
     }
@@ -240,28 +243,6 @@ fileprivate extension ViewController {
         outline.borderWidth = 2.0
         outline.borderColor = UIColor.red.cgColor
         sceneView.layer.addSublayer(outline)
-//        let node: SCNNode
-//        switch boxes.count {
-//        case 4: //top left
-//            node = nodes[1]
-//        case 5: //top right
-//            node = nodes[2]
-//        case 6: //bottom left
-//            node = nodes[3]
-//        case 7: //bottom right
-//            node = nodes[4]
-//        default:
-//            return
-//        }
-//        let point = CGPoint(x: 1 - (minY + (maxY - minY) / 2.0), y: 1 - (minX + (maxX - minX) / 2.0))
-////        node = nodes[4]
-////        let point = CGPoint(x: 0.75, y: 0.25)
-//        guard let position = frame.existingPlanePoint(for: point) else { return }
-//        print(point)
-////        node.removeFromParentNode()
-//        node.position = position.position()
-////        let rootNode = sceneView.node(for: anchor)
-////        rootNode?.addChildNode(node)
     }
     
     func highlightLetters(_ box: VNRectangleObservation) {
@@ -294,7 +275,7 @@ fileprivate extension ViewController {
 //        parkingSpace.firstMaterial?.specular.contents = UIColor.white
         let node = SCNNode(geometry: parkingArea)
         nodes.append(node)
-        sceneView.scene.rootNode.addChildNode(node)
+//        sceneView.scene.rootNode.addChildNode(node)
         let arrows = NavigationManager.shared.arrowsForNavigation()
         arrows.forEach { arrow in
             arrow.position = arrow.position + SCNVector3(-0.065, 0.001, 0.26)
@@ -302,17 +283,31 @@ fileprivate extension ViewController {
             node.addChildNode(arrow)
         }
         NavigationManager.shared.run(arrows)
-        for _ in 0..<4 {
-            let pinNode = SCNSphere(radius: 0.005)
-            pinNode.firstMaterial?.diffuse.contents = UIColor.red.withAlphaComponent(0.8)
-            pinNode.firstMaterial?.specular.contents = UIColor.white
-            let node = SCNNode(geometry: pinNode)
-            nodes.append(node)
-            sceneView.scene.rootNode.addChildNode(node)
-        }
+        drawParkingSpaces(node)
+//        for _ in 0..<4 {
+//            let pinNode = SCNSphere(radius: 0.005)
+//            pinNode.firstMaterial?.diffuse.contents = UIColor.red.withAlphaComponent(0.8)
+//            pinNode.firstMaterial?.specular.contents = UIColor.white
+//            let node = SCNNode(geometry: pinNode)
+//            nodes.append(node)
+//            sceneView.scene.rootNode.addChildNode(node)
+//        }
     }
     
-    func drawParkingSpaces() {
-        
+    func drawParkingSpaces(_ node: SCNNode) {
+        let lots: [(SCNVector3, CGFloat, LotType)] = [
+            (SCNVector3(0.24, 0.0, 0.02), CGFloat.pi * 0.5, .unavailable),
+            (SCNVector3(0.24, 0.0, -0.105), CGFloat.pi * 0.5, .unavailable),
+            (SCNVector3(0.035, 0.0, -0.235), CGFloat.pi, .unavailable),
+            (SCNVector3(-0.045, 0.0, -0.235), CGFloat.pi, .available),
+            (SCNVector3(-0.25, 0.0, 0.05), -CGFloat.pi * 0.5, .unavailable),
+            (SCNVector3(-0.25, 0.0, 0.13), -CGFloat.pi * 0.5, .available),
+        ]
+        lots.forEach { (position, angle, type) in
+            let parkingLot = ParkingLotNode(type)
+            parkingLot.position = position
+            parkingLot.eulerAngles = SCNVector3(0.0, angle, 0.0)
+            node.addChildNode(parkingLot)
+        }
     }
 }
