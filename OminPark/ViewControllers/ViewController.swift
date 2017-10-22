@@ -35,8 +35,8 @@ class ViewController: UIViewController {
         let scene = SCNScene()
         sceneView.scene = scene
         sceneView.session.delegate = self
-//        sceneView.showsStatistics = true
         // @TODO: Debug turned off
+//        sceneView.showsStatistics = true
 //        sceneView.debugOptions = [.showConstraints, .showLightExtents, ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
 //        sceneView.autoenablesDefaultLighting = true
 //        sceneView.automaticallyUpdatesLighting = true
@@ -45,14 +45,14 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = .horizontal
-        sceneView.session.run(configuration, options: [.removeExistingAnchors, .resetTracking])
         if notShowingMap {
             showMapView()
             notShowingMap = false
         }
+        super.viewWillAppear(animated)
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
+        sceneView.session.run(configuration, options: [.removeExistingAnchors, .resetTracking])
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -221,7 +221,8 @@ fileprivate extension ViewController {
     func showMapView() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mapViewController = storyboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-        present(mapViewController, animated: true, completion: nil)
+        mapViewController.modalPresentationStyle = .fullScreen
+        present(mapViewController, animated: false, completion: nil)
         mapViewController.parkingLotSelected = {
             self.selectedParkingLot = $0
         }
