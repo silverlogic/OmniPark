@@ -41,6 +41,9 @@
 		88F41F551F9C3E7A00E61DCF /* ParkingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F41F541F9C3E7A00E61DCF /* ParkingSpot.swift */; };
 		88F41F581F9C409300E61DCF /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F41F571F9C409300E61DCF /* NetworkClient.swift */; };
 		88F41F5A1F9C5F5000E61DCF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F41F591F9C5F5000E61DCF /* Constants.swift */; };
+		88F41F5C1F9C926E00E61DCF /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F41F5B1F9C926E00E61DCF /* Offer.swift */; };
+		88F41F5E1F9C978500E61DCF /* ParkBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F41F5D1F9C978500E61DCF /* ParkBooking.swift */; };
+		88F41F601F9C998400E61DCF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F41F5F1F9C998400E61DCF /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +132,9 @@
 		88F41F541F9C3E7A00E61DCF /* ParkingSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingSpot.swift; sourceTree = "<group>"; };
 		88F41F571F9C409300E61DCF /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		88F41F591F9C5F5000E61DCF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		88F41F5B1F9C926E00E61DCF /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
+		88F41F5D1F9C978500E61DCF /* ParkBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkBooking.swift; sourceTree = "<group>"; };
+		88F41F5F1F9C998400E61DCF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A1BB609092067954DCDC4990 /* Pods_watchapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watchapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04F599538D62DF6784CABEA /* Pods-OminPark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OminPark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OminPark/Pods-OminPark.debug.xcconfig"; sourceTree = "<group>"; };
 		BA3E2CAF70DA126D7E9AACA6 /* Pods-watchapp Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchapp Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchapp Extension/Pods-watchapp Extension.release.xcconfig"; sourceTree = "<group>"; };
@@ -309,6 +315,9 @@
 			isa = PBXGroup;
 			children = (
 				88F41F541F9C3E7A00E61DCF /* ParkingSpot.swift */,
+				88F41F5B1F9C926E00E61DCF /* Offer.swift */,
+				88F41F5D1F9C978500E61DCF /* ParkBooking.swift */,
+				88F41F5F1F9C998400E61DCF /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -638,6 +647,7 @@
 				4DAE21431F9C5326003E2D5A /* SCNNode+Extension.swift in Sources */,
 				4DAE21451F9C5479003E2D5A /* BaseNode.swift in Sources */,
 				88F41F501F9C1DB500E61DCF /* CircleButton.swift in Sources */,
+				88F41F5E1F9C978500E61DCF /* ParkBooking.swift in Sources */,
 				88F1D5101F9BD8D9007B0DA3 /* ViewController.swift in Sources */,
 				4DAE213F1F9C3E75003E2D5A /* NavigationManager.swift in Sources */,
 				88F41F551F9C3E7A00E61DCF /* ParkingSpot.swift in Sources */,
@@ -650,8 +660,10 @@
 				4DAE213A1F9BF27F003E2D5A /* CGPoint+Extension.swift in Sources */,
 				4DAE21491F9C80A1003E2D5A /* UIColor+Extension.swift in Sources */,
 				4DAE21361F9BF15E003E2D5A /* matrix_float4x4+Extension.swift in Sources */,
+				88F41F5C1F9C926E00E61DCF /* Offer.swift in Sources */,
 				88F1D50C1F9BD8D9007B0DA3 /* AppDelegate.swift in Sources */,
 				88F41F5A1F9C5F5000E61DCF /* Constants.swift in Sources */,
+				88F41F601F9C998400E61DCF /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
