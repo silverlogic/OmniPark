@@ -20,6 +20,7 @@
 		4DAE214B1F9C9ADF003E2D5A /* MeterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE214A1F9C9ADF003E2D5A /* MeterNode.swift */; };
 		4DAE214D1F9C9D02003E2D5A /* SCNMaterial+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE214C1F9C9D02003E2D5A /* SCNMaterial+Extension.swift */; };
 		4DAE214F1F9CA46F003E2D5A /* ARGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE214E1F9CA46F003E2D5A /* ARGesture.swift */; };
+		4DAE21511F9CC530003E2D5A /* OfferNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE21501F9CC530003E2D5A /* OfferNode.swift */; };
 		5F8480A2DE5397456B57D6F3 /* Pods_watchapp_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4561776948F5F234277F20 /* Pods_watchapp_Extension.framework */; };
 		65F19BE9C29EC2F7D91BDFF2 /* Pods_watchapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BB609092067954DCDC4990 /* Pods_watchapp.framework */; };
 		7FADC38F5F5253B078092783 /* Pods_OmniPark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE2134BD9C9E92673514915 /* Pods_OmniPark.framework */; };
@@ -108,6 +109,7 @@
 		4DAE214A1F9C9ADF003E2D5A /* MeterNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterNode.swift; sourceTree = "<group>"; };
 		4DAE214C1F9C9D02003E2D5A /* SCNMaterial+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNMaterial+Extension.swift"; sourceTree = "<group>"; };
 		4DAE214E1F9CA46F003E2D5A /* ARGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGesture.swift; sourceTree = "<group>"; };
+		4DAE21501F9CC530003E2D5A /* OfferNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferNode.swift; sourceTree = "<group>"; };
 		657017B593B550264C17E1A2 /* Pods-watchapp Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchapp Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchapp Extension/Pods-watchapp Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		66FB8BD12622196981EC8FC8 /* Pods-OmniPark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniPark.release.xcconfig"; path = "Pods/Target Support Files/Pods-OmniPark/Pods-OmniPark.release.xcconfig"; sourceTree = "<group>"; };
 		6B27F19781BB0F8E2AE52A9A /* Pods_OminPark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OminPark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +199,7 @@
 				4DAE21461F9C7B2B003E2D5A /* ParkingLotNode.swift */,
 				4DAE214A1F9C9ADF003E2D5A /* MeterNode.swift */,
 				4DAE214E1F9CA46F003E2D5A /* ARGesture.swift */,
+				4DAE21501F9CC530003E2D5A /* OfferNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				4DAE213F1F9C3E75003E2D5A /* NavigationManager.swift in Sources */,
 				88F41F551F9C3E7A00E61DCF /* ParkingSpot.swift in Sources */,
 				88F41F4C1F9C1C3800E61DCF /* CustomView.swift in Sources */,
+				4DAE21511F9CC530003E2D5A /* OfferNode.swift in Sources */,
 				88F41F581F9C409300E61DCF /* NetworkClient.swift in Sources */,
 				4DAE214D1F9C9D02003E2D5A /* SCNMaterial+Extension.swift in Sources */,
 				88F1D54A1F9BE2AB007B0DA3 /* MapViewController.swift in Sources */,

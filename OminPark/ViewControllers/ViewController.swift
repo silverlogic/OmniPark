@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     var notShowingMap = true
     var nodes: [SCNNode] = []
     var currentGesture: ARGesture?
+    var meterNode: MeterNode?
     
     
     // MARK: - Lifecycle
@@ -32,11 +33,11 @@ class ViewController: UIViewController {
         let scene = SCNScene()
         sceneView.scene = scene
         sceneView.session.delegate = self
-        sceneView.showsStatistics = true
+//        sceneView.showsStatistics = true
         // @TODO: Debug turned off
 //        sceneView.debugOptions = [.showConstraints, .showLightExtents, ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
-        sceneView.autoenablesDefaultLighting = true
-        sceneView.automaticallyUpdatesLighting = true
+//        sceneView.autoenablesDefaultLighting = true
+//        sceneView.automaticallyUpdatesLighting = true
         fillUpDemoNodes()
         ParkingSpotManager.shared.fetchParkingSpots()
     }
@@ -88,6 +89,37 @@ extension ViewController {
 
 // MARK: - ARSCNViewDelegate
 extension ViewController: ARSCNViewDelegate {
+//    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+//        guard let planeAnchor = anchor as? ARPlaneAnchor else {
+//            return nil
+//        }
+//        let node = SCNNode()
+//        let planeGeometry = SCNBox(width: CGFloat(planeAnchor.extent.x), height: planeHeight, length: CGFloat(planeAnchor.extent.z), chamferRadius: 0.0)
+//        planeGeometry.firstMaterial?.diffuse.contents = UIColor.green.withAlphaComponent(0.3)
+//        planeGeometry.firstMaterial?.specular.contents = UIColor.white
+//        let planeNode = SCNNode(geometry: planeGeometry)
+//        planeNode.position = SCNVector3Make(planeAnchor.center.x, -Float(planeHeight / 2), planeAnchor.center.z)
+//        //since SCNPlane is vertical, needs to be rotated -90 degrees on X axis to make a plane
+//        //planeNode.transform = SCNMatrix4MakeRotation(Float(-CGFloat.pi/2), 1, 0, 0)
+//        node.addChildNode(planeNode)
+//        anchors.append(planeAnchor)
+//        return node
+//    }
+//
+//    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+//        guard let planeAnchor = anchor as? ARPlaneAnchor, anchors.contains(planeAnchor) else {
+//            return
+//        }
+//        guard let planeNode = node.childNodes.first else {
+//            return
+//        }
+//        planeNode.position = SCNVector3Make(planeAnchor.center.x, -Float(planeHeight / 2), planeAnchor.center.z)
+//        if let plane = planeNode.geometry as? SCNBox {
+//            plane.width = CGFloat(planeAnchor.extent.x)
+//            plane.length = CGFloat(planeAnchor.extent.z)
+//            plane.height = planeHeight
+//        }
+//    }
 }
 
 
@@ -210,12 +242,12 @@ fileprivate extension ViewController {
     
     func drawParkingSpaces(_ node: SCNNode) {
         let parkingLots: [(SCNVector3, CGFloat, LotType)] = [
-            (SCNVector3(0.24, 0.0, 0.02), CGFloat.pi * 0.5, .unavailable),
-            (SCNVector3(0.24, 0.0, -0.105), CGFloat.pi * 0.5, .unavailable),
-            (SCNVector3(0.035, 0.0, -0.235), CGFloat.pi, .unavailable),
-            (SCNVector3(-0.045, 0.0, -0.235), CGFloat.pi, .available),
-            (SCNVector3(-0.25, 0.0, 0.05), -CGFloat.pi * 0.5, .unavailable),
-            (SCNVector3(-0.25, 0.0, 0.13), -CGFloat.pi * 0.5, .available),
+            (SCNVector3(0.24, 0.005, 0.02), CGFloat.pi * 0.5, .unavailable),
+            (SCNVector3(0.24, 0.005, -0.105), CGFloat.pi * 0.5, .unavailable),
+            (SCNVector3(0.035, 0.005, -0.235), CGFloat.pi, .unavailable),
+            (SCNVector3(-0.045, 0.005, -0.235), CGFloat.pi, .available),
+            (SCNVector3(-0.25, 0.005, 0.05), -CGFloat.pi * 0.5, .unavailable),
+            (SCNVector3(-0.25, 0.005, 0.13), -CGFloat.pi * 0.5, .available),
         ]
         parkingLots.forEach { (position, angle, type) in
             let parkingLot = ParkingLotNode(type)
@@ -230,16 +262,37 @@ fileprivate extension ViewController {
     }
     
     func showParkingMeter(for parkingLot: ParkingLotNode) {
+        guard meterNode == nil || meterNode?.isHidden == true else { return }
         let meter = MeterNode()
-        meter.position = SCNVector3(0.0, 0.4, 0.0)
+        meter.position = SCNVector3(0.0, 0.2, 0.4)
         meter.eulerAngles = SCNVector3(0.0, CGFloat.pi, 0.0)
         meter.parkingLot = parkingLot
         let meterSubNode = SCNNode()
         meterSubNode.addChildNode(meter)
         nodes[0].addChildNode(meterSubNode)
         meterSubNode.look(at: sceneView.pointOfView!, offset: SCNVector3(0.0, -0.6, 0.0))
-        meter.buttonNode.action = { _ in
+        meter.buttonNode.action = { [weak self] _ in
             meter.isHidden = true
+            self?.showOffers()
+        }
+    }
+    
+    func showOffers() {
+        let offerTao = OfferNode(#imageLiteral(resourceName: "icon-offertao"))
+        let offerInNOut = OfferNode(#imageLiteral(resourceName: "icon-offerinnout"))
+        offerTao.position = SCNVector3(-0.25, 0.2, -0.4)
+        offerInNOut.position = SCNVector3(0.25, 0.2, -0.4)
+        offerTao.look(at: sceneView.pointOfView!, offset: nil)
+        offerInNOut.look(at: sceneView.pointOfView!, offset: nil)
+        nodes[0].addChildNode(offerTao)
+        nodes[0].addChildNode(offerInNOut)
+        offerTao.action = { _ in
+            offerTao.isHidden = true
+            offerInNOut.isHidden = true
+        }
+        offerInNOut.action = { _ in
+            offerTao.isHidden = true
+            offerInNOut.isHidden = true
         }
     }
 }
