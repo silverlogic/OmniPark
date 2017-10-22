@@ -20,6 +20,8 @@ final class MapViewController: UIViewController {
     @IBOutlet private weak var arButton: CircleButton!
     @IBOutlet private weak var appleMapButton: CircleButton!
     @IBOutlet private weak var googleMapButton: CircleButton!
+    @IBOutlet var containerView: UIView!
+    var initialLaunched: Bool = false
     
     
     // MARK: - Private Instance Attributes
@@ -57,6 +59,15 @@ final class MapViewController: UIViewController {
         super.viewDidAppear(animated)
         mapMarkers = ParkingSpotManager.shared.parkingSpotMarkers(for: mapView)
         requestSpeechAuthorization()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let controller = segue.destination as? InitialViewController else { return }
+        controller.animateCompletion = {
+            UIView.animate(withDuration: 0.1) {
+                self.containerView.alpha = 0.0
+            }
+        }
     }
 }
 

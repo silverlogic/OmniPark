@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T3h-nD-652">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T3h-nD-652">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +20,7 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="BV1-FR-VrT" customClass="ViewController" customModule="OmniPark" customModuleProvider="target" sceneMemberID="viewController">
                     <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </arscnView>
                     <navigationItem key="navigationItem" id="q8b-M8-aNW"/>
@@ -39,18 +40,18 @@
             <objects>
                 <viewController storyboardIdentifier="MapViewController" id="VhW-Y6-8s6" customClass="MapViewController" customModule="OmniPark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JY5-ee-mSD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtp-hp-8Hw" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyv-XZ-Ry1" customClass="CustomView" customModule="OmniPark" customModuleProvider="target">
-                                <rect key="frame" x="7" y="568" width="361" height="59"/>
+                                <rect key="frame" x="7" y="637" width="400" height="59"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3377 S Las Vegas Blvd, Las Vegas, NV 89109" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQM-CR-Lvn">
-                                        <rect key="frame" x="8" y="3" width="345" height="21"/>
+                                        <rect key="frame" x="8" y="3" width="384" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="93w-C4-uox"/>
                                         </constraints>
@@ -58,7 +59,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVw-Kx-je2">
-                                        <rect key="frame" x="8" y="36" width="345" height="21"/>
+                                        <rect key="frame" x="8" y="36" width="384" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Nkd-q5-JRp"/>
                                         </constraints>
@@ -79,7 +80,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgX-40-d56" customClass="CircleButton" customModule="OmniPark" customModuleProvider="target">
-                                <rect key="frame" x="318" y="510" width="50" height="50"/>
+                                <rect key="frame" x="357" y="579" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.792156862745098" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="4Vl-M8-gka"/>
@@ -91,7 +92,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffX-BY-mu3" customClass="CircleButton" customModule="OmniPark" customModuleProvider="target">
-                                <rect key="frame" x="318" y="33" width="50" height="50"/>
+                                <rect key="frame" x="357" y="24" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.79215686269999996" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="c5S-AY-6BF"/>
@@ -100,7 +101,7 @@
                                 <state key="normal" image="settings-gear"/>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eQ-Wx-Be2" customClass="CircleButton" customModule="OmniPark" customModuleProvider="target">
-                                <rect key="frame" x="-55" y="511" width="50" height="50"/>
+                                <rect key="frame" x="-55" y="580" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="yko-0P-OAQ"/>
@@ -109,7 +110,7 @@
                                 <state key="normal" image="google-map"/>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFS-Ao-W6K" customClass="CircleButton" customModule="OmniPark" customModuleProvider="target">
-                                <rect key="frame" x="-55" y="454" width="50" height="50"/>
+                                <rect key="frame" x="-55" y="523" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="6TT-0o-ove"/>
@@ -118,7 +119,7 @@
                                 <state key="normal" image="apple-map"/>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUy-ic-7L7" customClass="CircleButton" customModule="OmniPark" customModuleProvider="target">
-                                <rect key="frame" x="-55" y="397" width="50" height="50"/>
+                                <rect key="frame" x="-55" y="466" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.79215686269999996" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="CJS-bz-v7N"/>
@@ -129,6 +130,13 @@
                                     <action selector="arButtonTapped" destination="VhW-Y6-8s6" eventType="touchUpInside" id="dRE-7W-jhg"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CHg-vb-V37">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="568-yo-L8G" kind="embed" id="oOa-PT-ZBZ"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -160,6 +168,7 @@
                     <connections>
                         <outlet property="appleMapButton" destination="rFS-Ao-W6K" id="igw-HV-SgH"/>
                         <outlet property="arButton" destination="vUy-ic-7L7" id="yJa-df-est"/>
+                        <outlet property="containerView" destination="CHg-vb-V37" id="F3n-fi-Edk"/>
                         <outlet property="googleMapButton" destination="0eQ-Wx-Be2" id="rD0-mk-ZLl"/>
                         <outlet property="mapView" destination="gtp-hp-8Hw" id="BQ9-Ll-GD7"/>
                         <outlet property="micButton" destination="QgX-40-d56" id="g3N-6B-FXX"/>
@@ -167,7 +176,101 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DTf-2l-Ga7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1396" y="114.69265367316342"/>
+            <point key="canvasLocation" x="1394.2028985507247" y="114.1304347826087"/>
+        </scene>
+        <!--Initial View Controller-->
+        <scene sceneID="ZHh-dx-Rkb">
+            <objects>
+                <viewController storyboardIdentifier="InitialViewController" id="568-yo-L8G" customClass="InitialViewController" customModule="OmniPark" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p6x-zG-btu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ajg-4I-9gc">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-top" translatesAutoresizingMaskIntoConstraints="NO" id="Opy-y7-jC8">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="736" id="GHv-MA-ITM"/>
+                                            <constraint firstAttribute="width" constant="414" id="J6I-N3-jo6"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-text" translatesAutoresizingMaskIntoConstraints="NO" id="0hE-zy-9VM">
+                                        <rect key="frame" x="100" y="160" width="214" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="214" id="G5q-vG-V33"/>
+                                            <constraint firstAttribute="width" secondItem="0hE-zy-9VM" secondAttribute="height" multiplier="107:16" id="Xfu-0u-7cX"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Q1m-er-POn">
+                                        <rect key="frame" x="102.66666666666669" y="230" width="209" height="193"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="209" id="8xE-YL-dbn"/>
+                                            <constraint firstAttribute="width" secondItem="Q1m-er-POn" secondAttribute="height" multiplier="209:193" id="QVx-oU-Gvf"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-omni" translatesAutoresizingMaskIntoConstraints="NO" id="IQ0-6Q-Ql5">
+                                        <rect key="frame" x="0.0" y="20" width="414" height="154"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="414" id="Jf9-DP-7VE"/>
+                                            <constraint firstAttribute="height" constant="154" id="TX8-3L-89P"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-park" translatesAutoresizingMaskIntoConstraints="NO" id="jT6-2W-Ny3">
+                                        <rect key="frame" x="0.0" y="20" width="414" height="154"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="154" id="9ug-tr-ubN"/>
+                                            <constraint firstAttribute="width" constant="414" id="iKs-KH-Q31"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Q1m-er-POn" firstAttribute="top" secondItem="Ajg-4I-9gc" secondAttribute="top" constant="230" id="8sH-kP-4uY"/>
+                                    <constraint firstItem="0hE-zy-9VM" firstAttribute="top" secondItem="Ajg-4I-9gc" secondAttribute="top" constant="160" id="AQh-Lw-Z0B"/>
+                                    <constraint firstItem="IQ0-6Q-Ql5" firstAttribute="leading" secondItem="Ajg-4I-9gc" secondAttribute="leading" id="Dth-m2-Pdr"/>
+                                    <constraint firstAttribute="trailing" secondItem="jT6-2W-Ny3" secondAttribute="trailing" id="Gjm-TP-Zb6"/>
+                                    <constraint firstItem="Q1m-er-POn" firstAttribute="centerX" secondItem="Ajg-4I-9gc" secondAttribute="centerX" id="NoZ-qE-mRt"/>
+                                    <constraint firstItem="Opy-y7-jC8" firstAttribute="top" secondItem="Ajg-4I-9gc" secondAttribute="top" id="TZF-t8-wsP"/>
+                                    <constraint firstItem="jT6-2W-Ny3" firstAttribute="top" secondItem="Ajg-4I-9gc" secondAttribute="top" constant="20" id="aty-iq-VWS"/>
+                                    <constraint firstItem="0hE-zy-9VM" firstAttribute="centerX" secondItem="Ajg-4I-9gc" secondAttribute="centerX" id="dYm-ut-0kD"/>
+                                    <constraint firstItem="IQ0-6Q-Ql5" firstAttribute="top" secondItem="Ajg-4I-9gc" secondAttribute="top" constant="20" id="iEs-xD-Y0K"/>
+                                    <constraint firstAttribute="height" constant="736" id="thi-hO-Zh0"/>
+                                    <constraint firstItem="Opy-y7-jC8" firstAttribute="leading" secondItem="Ajg-4I-9gc" secondAttribute="leading" id="uDM-MI-9WZ"/>
+                                    <constraint firstAttribute="width" constant="414" id="zQz-re-hi6"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-bottom" translatesAutoresizingMaskIntoConstraints="NO" id="19u-71-r6Z">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="736" id="UvE-Uw-kd8"/>
+                                    <constraint firstAttribute="width" constant="414" id="oJ6-pJ-DCZ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ajg-4I-9gc" firstAttribute="leading" secondItem="qgB-uh-M7h" secondAttribute="leading" id="2zR-YO-gBk"/>
+                            <constraint firstItem="19u-71-r6Z" firstAttribute="leading" secondItem="qgB-uh-M7h" secondAttribute="leading" id="46i-0O-tQX"/>
+                            <constraint firstItem="Ajg-4I-9gc" firstAttribute="top" secondItem="p6x-zG-btu" secondAttribute="top" id="ISQ-Ap-ncl"/>
+                            <constraint firstItem="19u-71-r6Z" firstAttribute="top" secondItem="p6x-zG-btu" secondAttribute="top" id="a6y-fO-qPG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qgB-uh-M7h"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomLevelConstraint" destination="a6y-fO-qPG" id="ahs-ZQ-KcR"/>
+                        <outlet property="logoTop" destination="8sH-kP-4uY" id="Wiu-oi-y38"/>
+                        <outlet property="logoWidth" destination="8xE-YL-dbn" id="F12-vA-zQi"/>
+                        <outlet property="omniLeading" destination="Dth-m2-Pdr" id="6HQ-Gk-eV4"/>
+                        <outlet property="parkTrailing" destination="Gjm-TP-Zb6" id="Xf7-ex-pjh"/>
+                        <outlet property="textWidth" destination="G5q-vG-V33" id="lrt-0y-Dzz"/>
+                        <outlet property="topLevelConstraint" destination="ISQ-Ap-ncl" id="8Jl-xY-RuR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p0Q-nX-01y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2452" y="114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ea8-IL-Kku">
@@ -194,6 +297,12 @@
         <image name="apple-map" width="70" height="70"/>
         <image name="ar-icon" width="30" height="30"/>
         <image name="google-map" width="70" height="70"/>
+        <image name="launch-bottom" width="1083" height="1924"/>
+        <image name="launch-logo" width="546" height="504"/>
+        <image name="launch-omni" width="1080" height="402"/>
+        <image name="launch-park" width="1080" height="402"/>
+        <image name="launch-text" width="558" height="83"/>
+        <image name="launch-top" width="1082" height="1924"/>
         <image name="settings-gear" width="30" height="30"/>
         <image name="white-microphone" width="30" height="30"/>
     </resources>
