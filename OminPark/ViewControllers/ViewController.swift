@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     var anchors: [ARAnchor] = []
     var notShowingMap = true
     var nodes: [SCNNode] = []
+    var currentGesture: ARGesture?
     
     
     // MARK: - Lifecycle
@@ -45,14 +46,42 @@ class ViewController: UIViewController {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         sceneView.session.run(configuration, options: [.removeExistingAnchors, .resetTracking])
-        if notShowingMap {
-            showMapView()
-            notShowingMap = false
-        }
+//        if notShowingMap {
+//            showMapView()
+//            notShowingMap = false
+//        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+}
+
+
+// MARK: UIResponder Methods
+extension ViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        currentGesture = currentGesture?.updateGestureFromTouches(touches, .touchEnded)
+        guard let touchLocation = touches.first?.location(in: sceneView) else { return }
+        let results = sceneView.hitTest(touchLocation, options: [.boundingBoxOnly: true])
+        guard let result = results.first else { return }
+        currentGesture = ARGesture.startGestureFromTouches(touches, sceneView, result.node)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+        currentGesture = currentGesture?.updateGestureFromTouches(touches, .touchMoved)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        currentGesture = currentGesture?.updateGestureFromTouches(touches, .touchEnded)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        currentGesture = currentGesture?.updateGestureFromTouches(touches, .touchCancelled)
     }
 }
 
@@ -105,6 +134,9 @@ fileprivate extension ViewController {
                 print("WRONG POSITION")
                 return
             }
+            if (positionTl - positionTr).length() > 0.1 || (positionTl - positionTr).length() < 0.04 {
+                return
+            }
             let angle = (positionTr.flatPoint() - positionTl.flatPoint()).angle() - CGFloat.pi * 0.01
             let node = self.nodes[0]
             if node.position == SCNVector3Zero {
@@ -117,7 +149,7 @@ fileprivate extension ViewController {
                 let rotateAction = SCNAction.rotateTo(x: 0, y: angle, z: 0, duration: duration)
                 node.runAction(SCNAction.group([moveAction, rotateAction]))
             }
-            print("found!!!")
+            print("found!!! \((positionTl - positionTr).length())")
         }
     }
     
@@ -177,7 +209,7 @@ fileprivate extension ViewController {
     }
     
     func drawParkingSpaces(_ node: SCNNode) {
-        let lots: [(SCNVector3, CGFloat, LotType)] = [
+        let parkingLots: [(SCNVector3, CGFloat, LotType)] = [
             (SCNVector3(0.24, 0.0, 0.02), CGFloat.pi * 0.5, .unavailable),
             (SCNVector3(0.24, 0.0, -0.105), CGFloat.pi * 0.5, .unavailable),
             (SCNVector3(0.035, 0.0, -0.235), CGFloat.pi, .unavailable),
@@ -185,11 +217,29 @@ fileprivate extension ViewController {
             (SCNVector3(-0.25, 0.0, 0.05), -CGFloat.pi * 0.5, .unavailable),
             (SCNVector3(-0.25, 0.0, 0.13), -CGFloat.pi * 0.5, .available),
         ]
-        lots.forEach { (position, angle, type) in
+        parkingLots.forEach { (position, angle, type) in
             let parkingLot = ParkingLotNode(type)
             parkingLot.position = position
             parkingLot.eulerAngles = SCNVector3(0.0, angle, 0.0)
             node.addChildNode(parkingLot)
+            parkingLot.action = { [weak self] node in
+                guard parkingLot.type == .available else { return }
+                self?.showParkingMeter(for: parkingLot)
+            }
+        }
+    }
+    
+    func showParkingMeter(for parkingLot: ParkingLotNode) {
+        let meter = MeterNode()
+        meter.position = SCNVector3(0.0, 0.4, 0.0)
+        meter.eulerAngles = SCNVector3(0.0, CGFloat.pi, 0.0)
+        meter.parkingLot = parkingLot
+        let meterSubNode = SCNNode()
+        meterSubNode.addChildNode(meter)
+        nodes[0].addChildNode(meterSubNode)
+        meterSubNode.look(at: sceneView.pointOfView!, offset: SCNVector3(0.0, -0.6, 0.0))
+        meter.buttonNode.action = { _ in
+            meter.isHidden = true
         }
     }
 }
