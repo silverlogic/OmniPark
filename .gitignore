@@ -39,8 +39,6 @@ playground.xcworkspace
 # Packages/
 # Package.pins
 .build/
-/*.xcodeproj
-/*.xcworkspace
 
 # CocoaPods
 #
