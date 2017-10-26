@@ -55,5 +55,10 @@
 	<string>$(PRODUCT_NAME) uses speech recognition for hands free parking search</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>$(PRODUCT_NAME) will start recognizing your speech after prompting for help</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

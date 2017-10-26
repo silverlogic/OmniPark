@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - Networking Constants
-private let baseHost = "http://10.101.0.164:8000"
+private let baseHost = "http://10.102.0.27:8000"
 let BASE_URL = "\(baseHost)/api/v1"
 
 

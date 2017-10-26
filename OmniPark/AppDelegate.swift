@@ -73,6 +73,21 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             completionHandler()
         case "com.silverlogic.OmniPark.renewaction":
             print("Action chosen")
+            let content2 = UNMutableNotificationContent()
+            content2.title = "Parking Space Expired"
+            content2.sound = UNNotificationSound.default()
+            content2.categoryIdentifier = "com.silverlogic.OmniPark.category.expiring"
+            let trigger2 = UNTimeIntervalNotificationTrigger(timeInterval: 25, repeats: false)
+            let notification2 = UNNotificationRequest(identifier: "com.silverlogic.OmniPark.request",
+                                                      content: content2,
+                                                      trigger: trigger2)
+            UNUserNotificationCenter.current().add(notification2) { (error) in
+                guard error == nil else {
+                    print("Error setting notification")
+                    return
+                }
+                print("Notification sent")
+            }
             ParkBookingManager.shared.extendParkBooking(completion: { (error) in
                 completionHandler()
             })

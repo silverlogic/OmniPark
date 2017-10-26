@@ -296,22 +296,7 @@ fileprivate extension ViewController {
                 let notification = UNNotificationRequest(identifier: "com.silverlogic.OmniPark.request",
                                                          content: content,
                                                          trigger: trigger)
-                let content2 = UNMutableNotificationContent()
-                content2.title = "Parking Space Expired"
-                content2.sound = UNNotificationSound.default()
-                content2.categoryIdentifier = "com.silverlogic.OmniPark.category.expiring"
-                let trigger2 = UNTimeIntervalNotificationTrigger(timeInterval: 50, repeats: false)
-                let notification2 = UNNotificationRequest(identifier: "com.silverlogic.OmniPark.request",
-                                                         content: content2,
-                                                         trigger: trigger2)
                 UNUserNotificationCenter.current().add(notification) { (error) in
-                    guard error == nil else {
-                        print("Error setting notification")
-                        return
-                    }
-                    print("Notification sent")
-                }
-                UNUserNotificationCenter.current().add(notification2) { (error) in
                     guard error == nil else {
                         print("Error setting notification")
                         return

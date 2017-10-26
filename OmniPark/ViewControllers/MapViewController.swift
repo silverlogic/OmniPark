@@ -80,7 +80,7 @@ private extension MapViewController {
     
     @IBAction func arButtonTapped() {
         dismiss(animated: true) {
-            self.parkingLotSelected?(self.selectedParkingLot)
+            //self.parkingLotSelected?(self.selectedParkingLot)
         }
     }
 }
@@ -214,10 +214,10 @@ private extension MapViewController {
                 self.speechSynthesizer.speak(utterance)
             }
         } else if validCommand.contains("give") {
-            arButton.animate(.position(CGPoint(x: 30, y: arButton.frame.center.y)),
-                             .spring(stiffness: 40, damping: 5),
-                             .duration(0.01),
-                             .fadeIn)
+//            arButton.animate(.position(CGPoint(x: 30, y: arButton.frame.center.y)),
+//                             .spring(stiffness: 40, damping: 5),
+//                             .duration(0.01),
+//                             .fadeIn)
             appleMapButton.animate(.delay(0.03),
                                    .position(CGPoint(x: 30, y: appleMapButton.frame.center.y)),
                                    .spring(stiffness: 40, damping: 5),
