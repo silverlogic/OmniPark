@@ -171,7 +171,7 @@ fileprivate extension ViewController {
             if (positionTl - positionTr).length() > 0.1 || (positionTl - positionTr).length() < 0.04 {
                 return
             }
-            let angle = (positionTr.flatPoint() - positionTl.flatPoint()).angle() - CGFloat.pi * 0.01
+            let angle = (positionTr.flatPoint() - positionTl.flatPoint()).angle() + CGFloat.pi * 0.02
             let node = self.nodes[0]
             if node.position == SCNVector3Zero {
                 node.position = positionTl
