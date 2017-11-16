@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T3h-nD-652">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T3h-nD-652">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -130,13 +130,6 @@
                                     <action selector="arButtonTapped" destination="VhW-Y6-8s6" eventType="touchUpInside" id="dRE-7W-jhg"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CHg-vb-V37">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="568-yo-L8G" kind="embed" id="oOa-PT-ZBZ"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -168,7 +161,6 @@
                     <connections>
                         <outlet property="appleMapButton" destination="rFS-Ao-W6K" id="igw-HV-SgH"/>
                         <outlet property="arButton" destination="vUy-ic-7L7" id="yJa-df-est"/>
-                        <outlet property="containerView" destination="CHg-vb-V37" id="F3n-fi-Edk"/>
                         <outlet property="googleMapButton" destination="0eQ-Wx-Be2" id="rD0-mk-ZLl"/>
                         <outlet property="mapView" destination="gtp-hp-8Hw" id="BQ9-Ll-GD7"/>
                         <outlet property="micButton" destination="QgX-40-d56" id="g3N-6B-FXX"/>

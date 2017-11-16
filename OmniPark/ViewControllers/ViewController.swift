@@ -26,6 +26,9 @@ class ViewController: UIViewController {
     var currentGesture: ARGesture?
     var meterNode: MeterNode?
     var selectedParkingLot: ParkingSpot?
+    var lastFrameUpdateDate: Date?
+    // Duration between updates in seconds
+    var visionRequestsDuration: Double = 0.2
     
     
     // MARK: - Lifecycle
@@ -41,7 +44,9 @@ class ViewController: UIViewController {
 //        sceneView.autoenablesDefaultLighting = true
 //        sceneView.automaticallyUpdatesLighting = true
         fillUpDemoNodes()
-        ParkingSpotManager.shared.fetchParkingSpots()
+        DispatchQueue.global(qos: .userInitiated).async {
+            ParkingSpotManager.shared.fetchParkingSpots()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,7 +133,11 @@ extension ViewController: ARSCNViewDelegate {
 // MARK: - ARSessionDelegate
 extension ViewController: ARSessionDelegate {
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        DispatchQueue.global(qos: .userInteractive).async { [unowned self] in
+        if let lastUpdate = lastFrameUpdateDate, Date().timeIntervalSince(lastUpdate) < visionRequestsDuration {
+            return
+        }
+        lastFrameUpdateDate = Date()
+        DispatchQueue.global(qos: .utility).async { [unowned self] in
             let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: frame.capturedImage, orientation: .right, options: [:])
             do {
                 try imageRequestHandler.perform([self.textRecognishionRequest(frame)])

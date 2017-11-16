@@ -20,8 +20,7 @@ final class MapViewController: UIViewController {
     @IBOutlet private weak var arButton: CircleButton!
     @IBOutlet private weak var appleMapButton: CircleButton!
     @IBOutlet private weak var googleMapButton: CircleButton!
-    @IBOutlet var containerView: UIView!
-    var initialLaunched: Bool = false
+    @IBOutlet private weak var containerView: UIView!
     
     
     // MARK: - Private Instance Attributes
