@@ -61,6 +61,9 @@ final class ParkingSpotManager {
     
     // MARK: - Public Instance Methods
     func fetchParkingSpots() {
+        mockSpots()
+        return
+        // @TODO: API Disabled.
         let url = "\(BASE_URL)/spots"
         DispatchQueue.global(qos: .userInitiated).async {
             let networkClient = NetworkClient()
@@ -146,5 +149,20 @@ final class ParkingSpotManager {
                 }
             })
         }
+    }
+    
+    func mockSpots() {
+        let location = ParkingSpot.ParkingLocation(latitude: 36.1230297, longitude: -115.1701917)
+        let demoSpot = ParkingSpot(
+            parkingSpotId: 1,
+            type: "p2p",
+            addressLine1: "3327 S Las Vegas Blvd",
+            addressLine2: "",
+            city: "Las Vegas",
+            state: "NV",
+            postalCode: "89109",
+            location: location
+        )
+        parkingSpots = [demoSpot]
     }
 }

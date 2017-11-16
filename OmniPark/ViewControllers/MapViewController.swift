@@ -79,7 +79,8 @@ private extension MapViewController {
     
     @IBAction func arButtonTapped() {
         dismiss(animated: true) {
-            //self.parkingLotSelected?(self.selectedParkingLot)
+            guard let spot = self.selectedParkingLot else { return }
+            self.parkingLotSelected?(spot)
         }
     }
 }
@@ -191,7 +192,7 @@ private extension MapViewController {
         }
         stopSpeechRecognition()
         if validCommand.contains("find") {
-            let peerMarker = mapMarkers[1]
+            let peerMarker = mapMarkers[0]
             selectedParkingLot = ParkingSpotManager.shared.parkingSpotForMarker(peerMarker)!
             ParkingSpotManager.shared.directionsToMarker(peerMarker, starting: startingLocationCoordinate) { (polyline, error) in
                 guard error == nil else {
