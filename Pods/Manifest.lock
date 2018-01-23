@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.5.1)
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
+  - Fabric (1.7.2)
   - GoogleMaps (2.4.0):
     - GoogleMaps/Maps (= 2.4.0)
   - GoogleMaps/Base (2.4.0)
@@ -14,6 +17,8 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.5.1)
+  - Crashlytics
+  - Fabric
   - GoogleMaps
   - GooglePlaces
   - Motion (~> 1.2.2)
@@ -21,11 +26,13 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
   GooglePlaces: aafe5990fa7951e98e078761bbdaaf236d7e0c65
   Motion: 532cc6bb5d6777c58a20f71c26c5825173017f60
   SwiftyJSON: dc88934f85fb50b263b1632b9cbad3402505783e
 
-PODFILE CHECKSUM: 6ea4ed68af38dba126d03fdf19391a211c2feaaf
+PODFILE CHECKSUM: c0ec8a3a8e64e86f5483217f30ad2d8f1c20ac0d
 
 COCOAPODS: 1.3.1

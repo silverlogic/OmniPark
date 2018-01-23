@@ -9,6 +9,8 @@
 import UIKit
 import UserNotifications
 import GoogleMaps
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        Fabric.with([Crashlytics.self])
         GMSServices.provideAPIKey(GOOGLE_MAPS_API_KEY)
         UserManager.shared.login()
         let current = UNUserNotificationCenter.current()

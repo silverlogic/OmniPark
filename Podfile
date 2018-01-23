@@ -7,6 +7,8 @@ target 'OmniPark' do
 
   # Pods for OminPark
   pod 'Alamofire', '~> 4.5.1'
+  pod 'Crashlytics'
+  pod 'Fabric'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'Motion', '~> 1.2.2'
